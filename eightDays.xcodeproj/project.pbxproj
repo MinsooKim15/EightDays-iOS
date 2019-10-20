@@ -14,6 +14,8 @@
 		02114817235C37B7003E77F0 /* eightDays.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02114815235C37B7003E77F0 /* eightDays.xcdatamodeld */; };
 		02114819235C37BA003E77F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02114818235C37BA003E77F0 /* Assets.xcassets */; };
 		0211481C235C37BA003E77F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211481A235C37BA003E77F0 /* LaunchScreen.storyboard */; };
+		02114824235C3808003E77F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02114823235C3808003E77F0 /* GoogleService-Info.plist */; };
+		0E2F9A0FF166912EBFF30B9B /* Pods_eightDays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F94D76FB157099D5D8D3E3 /* Pods_eightDays.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		02114818235C37BA003E77F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0211481B235C37BA003E77F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0211481D235C37BA003E77F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02114823235C3808003E77F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../dev/deep learning/Lecture5/Week3/Trigger word detection/raw_data/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13F94D76FB157099D5D8D3E3 /* Pods_eightDays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eightDays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C341A1509626D7590F9AA3B8 /* Pods-eightDays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eightDays.release.xcconfig"; path = "Target Support Files/Pods-eightDays/Pods-eightDays.release.xcconfig"; sourceTree = "<group>"; };
+		C5F3A6A020FC4ED4052F964F /* Pods-eightDays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eightDays.debug.xcconfig"; path = "Target Support Files/Pods-eightDays/Pods-eightDays.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E2F9A0FF166912EBFF30B9B /* Pods_eightDays.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +51,8 @@
 			children = (
 				0211480B235C37B7003E77F0 /* eightDays */,
 				0211480A235C37B7003E77F0 /* Products */,
+				0C20E991FDBC548F8099EDA1 /* Pods */,
+				E5D1ABCDBFB2D9862C3147B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,10 +73,29 @@
 				02114812235C37B7003E77F0 /* Main.storyboard */,
 				02114818235C37BA003E77F0 /* Assets.xcassets */,
 				0211481A235C37BA003E77F0 /* LaunchScreen.storyboard */,
+				02114823235C3808003E77F0 /* GoogleService-Info.plist */,
 				0211481D235C37BA003E77F0 /* Info.plist */,
 				02114815235C37B7003E77F0 /* eightDays.xcdatamodeld */,
 			);
 			path = eightDays;
+			sourceTree = "<group>";
+		};
+		0C20E991FDBC548F8099EDA1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C5F3A6A020FC4ED4052F964F /* Pods-eightDays.debug.xcconfig */,
+				C341A1509626D7590F9AA3B8 /* Pods-eightDays.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E5D1ABCDBFB2D9862C3147B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13F94D76FB157099D5D8D3E3 /* Pods_eightDays.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02114820235C37BA003E77F0 /* Build configuration list for PBXNativeTarget "eightDays" */;
 			buildPhases = (
+				F476246F49A57694A4792E1F /* [CP] Check Pods Manifest.lock */,
 				02114805235C37B7003E77F0 /* Sources */,
 				02114806235C37B7003E77F0 /* Frameworks */,
 				02114807235C37B7003E77F0 /* Resources */,
+				6B5E26D67FFB76864E60BA4C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,12 +159,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				0211481C235C37BA003E77F0 /* LaunchScreen.storyboard in Resources */,
+				02114824235C3808003E77F0 /* GoogleService-Info.plist in Resources */,
 				02114819235C37BA003E77F0 /* Assets.xcassets in Resources */,
 				02114814235C37B7003E77F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B5E26D67FFB76864E60BA4C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-eightDays/Pods-eightDays-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-eightDays/Pods-eightDays-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eightDays/Pods-eightDays-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F476246F49A57694A4792E1F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eightDays-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02114805235C37B7003E77F0 /* Sources */ = {
@@ -286,6 +359,7 @@
 		};
 		02114821235C37BA003E77F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5F3A6A020FC4ED4052F964F /* Pods-eightDays.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +378,7 @@
 		};
 		02114822235C37BA003E77F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C341A1509626D7590F9AA3B8 /* Pods-eightDays.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
