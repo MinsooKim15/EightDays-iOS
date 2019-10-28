@@ -6,6 +6,10 @@ target 'eightDays' do
   use_frameworks!
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Core'
+  pod 'SDWebImage', '~> 5.0'
   # Pods for eightDays
 
 end
