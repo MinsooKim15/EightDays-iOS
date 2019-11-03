@@ -14,6 +14,7 @@
 		02114817235C37B7003E77F0 /* eightDays.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02114815235C37B7003E77F0 /* eightDays.xcdatamodeld */; };
 		02114819235C37BA003E77F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02114818235C37BA003E77F0 /* Assets.xcassets */; };
 		0211481C235C37BA003E77F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211481A235C37BA003E77F0 /* LaunchScreen.storyboard */; };
+		024180E52369D54900185690 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024180E42369D54900185690 /* MainNavigationController.swift */; };
 		0262245F2365AEC9008DD7E0 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262245E2365AEC9008DD7E0 /* Place.swift */; };
 		026224612365AFF1008DD7E0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026224602365AFF1008DD7E0 /* Weather.swift */; };
 		026224632365B05A008DD7E0 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026224622365B05A008DD7E0 /* Hotel.swift */; };
@@ -34,6 +35,7 @@
 		02114818235C37BA003E77F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0211481B235C37BA003E77F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0211481D235C37BA003E77F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		024180E42369D54900185690 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		0262245E2365AEC9008DD7E0 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		026224602365AFF1008DD7E0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		026224622365B05A008DD7E0 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				0211480E235C37B7003E77F0 /* SceneDelegate.swift */,
 				02114810235C37B7003E77F0 /* ViewController.swift */,
 				02114812235C37B7003E77F0 /* Main.storyboard */,
+				024180E42369D54900185690 /* MainNavigationController.swift */,
 				0262245E2365AEC9008DD7E0 /* Place.swift */,
 				026224602365AFF1008DD7E0 /* Weather.swift */,
 				026224622365B05A008DD7E0 /* Hotel.swift */,
@@ -234,6 +237,7 @@
 				02114817235C37B7003E77F0 /* eightDays.xcdatamodeld in Sources */,
 				026224672365BE8F008DD7E0 /* MainTableViewCell.swift in Sources */,
 				02114811235C37B7003E77F0 /* ViewController.swift in Sources */,
+				024180E52369D54900185690 /* MainNavigationController.swift in Sources */,
 				0211480D235C37B7003E77F0 /* AppDelegate.swift in Sources */,
 				0262245F2365AEC9008DD7E0 /* Place.swift in Sources */,
 				026224612365AFF1008DD7E0 /* Weather.swift in Sources */,

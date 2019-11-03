@@ -11,14 +11,13 @@ import FirebaseFirestore
 import SDWebImage
 
 class MainTableViewController: UITableViewController {
-    //TODO : 스크롤할때마다 메소드들이 우수수 재실행됨..
+    //TODO: 스크롤할때마다 메소드들이 우수수 재실행됨..
     //TODO: 갑자기 getdocument 실행 없이 cell들이 실행되어서, places가 빈값이 되어버림 해결하자
     var db: Firestore!
-    // MARK : View LifeCycle
-    
+    // MARK : View LifeCycleå
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,11 +26,37 @@ class MainTableViewController: UITableViewController {
         print("viewdidLoad")
         tableView.dataSource = self
         tableView.delegate = self
+        
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
-        getDocument()
+        getMainPlace()
+        setNavigationBar()
+        
+        //여기까지
 //        addDocument()
+    }
+    @objc
+    func menuTapped(){
+        print("메뉴 버튼 구현해야 합니다!!!")
+    }
+    @objc
+    func searchTapped(){
+        print("검색 버튼 구현해야 합니다!!!")
+    }
+    //Navigation Bar 기본 설정을 위한 메소드
+    func setNavigationBar(){
+        //여기부터 밑에는 navigation controller와 관련된 무엇인가를 테스트해보는 곳 입니다.
+        self.navigationItem.title = "이름이다."
+        self.navigationController?.navigationBar.tintColor = .white
+        
+        //TODO : Menu Button이 들어와야 할 자리임.
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(menuTapped))
+        //TODO : Search Button이 들어와야 할 자리임.
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(searchTapped))
+        self.navigationController?.navigationBar.barTintColor = .brightCyan
+        self.navigationController?.navigationBar.isTranslucent = false
+
     }
 
     override func viewDidAppear(_ animated:Bool){
@@ -46,7 +71,7 @@ class MainTableViewController: UITableViewController {
     }
     
     
-    // MARK: Firestore Query
+    //MARK: Firestore Query
 
 
     private var places: [Place] = []
@@ -67,9 +92,12 @@ class MainTableViewController: UITableViewController {
         }
     }
     
-    func getDocument(){
+    func getMainPlace(){
+        //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
         print("getDocument")
-        db.collection("place").getDocuments(){(querySnapshot, err) in
+        let placeRef = db.collection("place")
+        placeRef.order(by: "score", descending: true).limit(to: 1)
+        placeRef.getDocuments(){(querySnapshot, err) in
             print("==================")
             print(querySnapshot!.documents[0].data())
             print("==================")
@@ -90,6 +118,11 @@ class MainTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+    func getCuration(){
+        print("getCuration")
+        //아.. 그러면 다시 collection view 넣어야 하는데 난이도가 폭발이네..
+    }
+    
     
     // MARK: - Table view data source
 
@@ -112,7 +145,13 @@ class MainTableViewController: UITableViewController {
         cell.populate(place:place)
         return cell
     }
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return CGFloat(461.3)
+        }else{
+            return CGFloat(349.7)
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -159,6 +198,7 @@ class MainTableViewController: UITableViewController {
     */
 
 }
+
 
 
 //이 밑에 코드들은 snapshot과 listener를 사용하려다 실패한 내용들임.
@@ -214,3 +254,70 @@ class MainTableViewController: UITableViewController {
 //    let firestore: Firestore = Firestore.firestore()
 //    return firestore.collection("place").limit(to : 1)
 //}
+extension UIColor {
+
+  @nonobjc class var orangeyRed: UIColor {
+    return UIColor(red: 1.0, green: 59.0 / 255.0, blue: 48.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var warmBlue: UIColor {
+    return UIColor(red: 88.0 / 255.0, green: 86.0 / 255.0, blue: 214.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var reddishPink: UIColor {
+    return UIColor(red: 1.0, green: 45.0 / 255.0, blue: 85.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var tangerine: UIColor {
+    return UIColor(red: 1.0, green: 149.0 / 255.0, blue: 0.0, alpha: 1.0)
+  }
+
+  @nonobjc class var robinSEgg: UIColor {
+    return UIColor(red: 90.0 / 255.0, green: 200.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var deepSkyBlue: UIColor {
+    return UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0)
+  }
+
+  @nonobjc class var white: UIColor {
+    return UIColor(white: 1.0, alpha: 1.0)
+  }
+
+  @nonobjc class var weirdGreen: UIColor {
+    return UIColor(red: 76.0 / 255.0, green: 217.0 / 255.0, blue: 100.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var marigold: UIColor {
+    return UIColor(red: 1.0, green: 204.0 / 255.0, blue: 0.0, alpha: 1.0)
+  }
+
+  @nonobjc class var paleGrey: UIColor {
+    return UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var paleLilac: UIColor {
+    return UIColor(red: 229.0 / 255.0, green: 229.0 / 255.0, blue: 234.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var lightBlueGrey: UIColor {
+    return UIColor(red: 209.0 / 255.0, green: 209.0 / 255.0, blue: 214.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var blueGrey: UIColor {
+    return UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 147.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var black: UIColor {
+    return UIColor(white: 0.0, alpha: 1.0)
+  }
+
+  @nonobjc class var brightCyan: UIColor {
+    return UIColor(red: 91.0 / 255.0, green: 241.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var darkSkyBlue: UIColor {
+    return UIColor(red: 78.0 / 255.0, green: 140.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+  }
+
+}

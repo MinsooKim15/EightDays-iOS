@@ -10,6 +10,8 @@ target 'eightDays' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
   pod 'SDWebImage', '~> 5.0'
+  pod 'AlamofireImage', '~> 3.5'
+  pod "MBCircularProgressBar"
   # Pods for eightDays
 
 end
