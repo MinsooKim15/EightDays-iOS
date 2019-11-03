@@ -38,39 +38,42 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKc-fu-jeV">
-                                            <rect key="frame" x="74.5" y="339" width="257" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKc-fu-jeV">
+                                            <rect key="frame" x="74.5" y="274" width="257" height="81"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="257" id="cDp-th-sAi"/>
+                                                <constraint firstAttribute="height" constant="81" id="dPI-N6-LNI"/>
+                                            </constraints>
                                             <string key="text">날씨도 맑고 비행기 표도 성수기보다는 싼 편이에요. 환율이 조금 세다는 것이 단점. 
 </string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEP-Hb-EKe">
-                                            <rect key="frame" x="337" y="40" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVv-5T-VjG">
-                                            <rect key="frame" x="112" y="95" width="190" height="190"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mVv-5T-VjG">
+                                            <rect key="frame" x="112" y="48" width="190" height="190"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="190" id="AZa-CQ-DEx"/>
+                                                <constraint firstAttribute="height" constant="190" id="PZ1-5T-3gS"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="maskImage" value="circle" catalog="system"/>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="BKc-fu-jeV" secondAttribute="trailing" constant="82.5" id="4ww-6A-NXe"/>
+                                        <constraint firstAttribute="trailing" secondItem="BKc-fu-jeV" secondAttribute="trailing" priority="750" constant="82.5" id="4ww-6A-NXe"/>
+                                        <constraint firstItem="mVv-5T-VjG" firstAttribute="top" secondItem="fjW-D1-DcY" secondAttribute="top" priority="750" constant="48" id="Ian-0m-TEe"/>
                                         <constraint firstItem="BKc-fu-jeV" firstAttribute="leading" secondItem="fjW-D1-DcY" secondAttribute="leading" constant="74.5" id="cZc-BK-iEH"/>
-                                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="BKc-fu-jeV" secondAttribute="bottom" constant="56" id="hmz-0n-FKw"/>
+                                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="BKc-fu-jeV" secondAttribute="bottom" constant="103.3" id="hmz-0n-FKw"/>
+                                        <constraint firstAttribute="trailing" secondItem="mVv-5T-VjG" secondAttribute="trailing" constant="112" id="jqG-oC-ZHh"/>
+                                        <constraint firstItem="mVv-5T-VjG" firstAttribute="leading" secondItem="fjW-D1-DcY" secondAttribute="leading" constant="112" id="pcm-fp-0uo"/>
+                                        <constraint firstItem="BKc-fu-jeV" firstAttribute="top" secondItem="mVv-5T-VjG" secondAttribute="bottom" constant="36" id="py6-8g-pBe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cellDescription" destination="BKc-fu-jeV" id="FgH-rY-S4d"/>
                                     <outlet property="cellImageView" destination="mVv-5T-VjG" id="QJF-S7-LNg"/>
-                                    <outlet property="score" destination="tEP-Hb-EKe" id="SQf-HP-3XQ"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VwN-Vc-QL9">

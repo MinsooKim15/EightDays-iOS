@@ -141,10 +141,32 @@ class MainTableViewController: UITableViewController {
         //아직 안 만들었는데, 요거 좋은 거 같아 한 줄로 데이터 밀어 넣고, 실제 데이터 받아내는 메소드는 cell에서 구현하기
 //        print("안녕 프린트는 잘 된단다")
         print(places.count)
-        var place = places[indexPath.row]
-        cell.populate(place:place)
+        if indexPath.row == 0{
+            // 아래는 첫 셀에 gradient를 입히는 코드입니다.
+            // 이것도 따로 메소드화 해야 하는데, cell이 이 내부에만 정의되는 것이어서, 어떻게 해야 할지 감이 없네요.
+            let gradient: CAGradientLayer = CAGradientLayer()
+
+            gradient.colors = [UIColor.brightCyan.cgColor, UIColor.darkSkyBlue.cgColor]
+            gradient.locations = [0.0 , 0.5]
+            gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
+            gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+            gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width,
+                                    height: self.view.frame.size.height)
+
+            cell.layer.insertSublayer(gradient, at: 0)
+            // 이 위까지요.
+            
+            var place = places[indexPath.row]
+            cell.populate(place:place)
+            
+        }
+        
         return cell
     }
+    func makeGradient(){
+        
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
             return CGFloat(461.3)

@@ -10,15 +10,24 @@ import UIKit
 import AlamofireImage
 import MBCircularProgressBar
 
-class MainTableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell{
     
     //190CGRect(x :, size: CGSize(width : CGFloat(100), height: CGFloat(100)))
     override func awakeFromNib() {
         super.awakeFromNib()
+//        setGradientBackground()
         // 줄 바꿈은 단어 단위로..?( 더 해보고 변경 필요하면 바꾸자)
         self.cellDescription.lineBreakMode = .byWordWrapping
         setImageView()
-        
+//        let colorTop =  UIColor.brightCyan
+//        let colorBottom = UIColor.darkSkyBlue
+//
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [colorTop, colorBottom]
+//        gradientLayer.locations = [0.0, 1.0]
+//        gradientLayer.frame = self.bounds
+//        self.layer.insertSublayer(gradientLayer, at:0)
+//
         // Label을 생성해서 cellImageView의 가운데에 두는 일은 아래의 메소드에서 합니다.
         adjustLabelToImage()
        
@@ -125,10 +134,7 @@ class MainTableViewCell: UITableViewCell {
         coverLayer.backgroundColor = UIColor.black.cgColor
         coverLayer.opacity = 0.2
         self.cellImageView.layer.addSublayer(coverLayer)
-        
-        
-        
-
+    
     }
     func setScoreRound () {
         
@@ -163,7 +169,16 @@ class MainTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBOutlet weak var score: UILabel!
+    func setGradientBackground() {
+        let colorTop =  UIColor.brightCyan
+        let colorBottom = UIColor.darkSkyBlue
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
     
     var label: UILabel!
     
@@ -181,8 +196,6 @@ class MainTableViewCell: UITableViewCell {
     }
     
     func populate(place : Place){
-//        title.text = place.title_eng
-        score.text = String(place.score)
         self.scoreInt = place.score
         cellDescription.text = place.description
         label.text = place.title_eng
