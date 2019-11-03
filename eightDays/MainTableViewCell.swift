@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import MBCircularProgressBar
 
 class MainTableViewCell: UITableViewCell {
     
@@ -20,8 +21,9 @@ class MainTableViewCell: UITableViewCell {
         
         // Label을 생성해서 cellImageView의 가운데에 두는 일은 아래의 메소드에서 합니다.
         adjustLabelToImage()
+       
         
-
+        
     }
     
     func adjustLabelToImage(){
@@ -33,8 +35,9 @@ class MainTableViewCell: UITableViewCell {
         label.text = "boracay"
         label.textColor = .white
         label.font = .systemFont(ofSize: CGFloat(30))
-        self.cellImageView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
+        self.cellImageView.addSubview(label)
 
         
         //TODO : 일단 가운데에 두기는 했는데, 아직 이쁘지 않아 해결하자
@@ -44,18 +47,73 @@ class MainTableViewCell: UITableViewCell {
         // label.centerXAnchor.constraint(equalTo: self.cellImageView.centerXAnchor).isActive = true
         // label.centerYAnchor.constraint(equalTo: self.cellImageView.centerYAnchor).isActive = true
         
+    
         // 요 아래 코드의 의미를 알아야, imageView 안에 score를 넣을 텐데..
+        // 요 위에 코드는 건들지 맙시다. 절대로(95% 성공전까지)
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        let centerXConstraint = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
-        let centerYConstraint = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerY, multiplier: 1, constant: 0)
-        let widthConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        let heightConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        
+        
+        
+        let newLabel = UILabel(frame: CGRect(origin: mainViewOrigin, size: CGSize(width:100, height : 100)))
+        newLabel.textAlignment = .center
+        newLabel.text = "95%"
+        newLabel.textColor = .white
+        newLabel.translatesAutoresizingMaskIntoConstraints = false
+        newLabel.font = .systemFont(ofSize: CGFloat(30))
+//        newLabel.backgroundColor = .black
+        self.cellImageView.addSubview(newLabel)
+        // 여기까지가 newLabel 정의 구간.
+        
+        
+        let labelcenterXConstraint = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
+        let newLabelcenterXConstraint = NSLayoutConstraint(item: newLabel, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
+        
+        
+        let labelcenterYConstraint = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .bottom, multiplier: 0.4, constant: 0)
+        let newLabelcenterYConstraint = NSLayoutConstraint(item: newLabel, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .bottom, multiplier: 0.65, constant: 0)
+        
+        
+        let labelwidthConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        let newLabelwidthConstraint = NSLayoutConstraint(item: newLabel, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        
+        let labelheightConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 50)
+        let newLabelheightConstraint = NSLayoutConstraint(item: newLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        
 
-        self.cellImageView.addConstraints([centerXConstraint, centerYConstraint, widthConstraint, heightConstraint])
+        self.cellImageView.addConstraints([
+            labelcenterXConstraint,
+            labelcenterYConstraint,
+            labelwidthConstraint,
+            labelheightConstraint
+        ])
+        self.cellImageView.addConstraints([
+            newLabelcenterXConstraint,
+            newLabelcenterYConstraint,
+            newLabelwidthConstraint,
+            newLabelheightConstraint
+        ])
         self.cellImageView.layoutIfNeeded()
         
+        
+    
+        
+        // 요 아래의 전체 코드는 Hawai'i 센터 정렬이 정상 동작할 때 쓰던 코드입니다.
+        // 코드에 손을 대다보니 이런 백업을 해두었는데, 급할 때 쓰세요.
+        
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let centerXConstraint = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
+//        let centerYConstraint = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerY, multiplier: 1, constant: 0)
+//        let widthConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+//        let heightConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+//
+//        self.cellImageView.addConstraints([centerXConstraint, centerYConstraint, widthConstraint, heightConstraint])
+//        self.cellImageView.layoutIfNeeded()
+//
+        
+        
     }
+    
     
     func setImageView(){
         // 이미지 뷰의 사이즈를 fit하게 하고, 둥글게 만드는 코드 모음
@@ -68,6 +126,35 @@ class MainTableViewCell: UITableViewCell {
         coverLayer.opacity = 0.2
         self.cellImageView.layer.addSublayer(coverLayer)
         
+        
+        
+
+    }
+    func setScoreRound () {
+        
+        // 아래의 코드를 쓰면, imageview 안에 동그라미를 채울 수 있고 쉽게 비율에 따라 조절도 가능하지만
+        // 이미지 안을 채우게 되어서 조금 안 이쁨. 이미지 밖을 두를 수 있어야 하는데, 그건 나중에 하자
+        // instagram 동그라미 그리는 법 찾으면 나올 것 같음.
+        // round view
+        
+        // bezier path
+        let circlePath = UIBezierPath(arcCenter: CGPoint (x: self.cellImageView.frame.size.width / 2, y: self.cellImageView.frame.size.height / 2),
+                                      radius: self.cellImageView.frame.size.width / 2,
+                                      startAngle: CGFloat(-0.5 * .pi),
+                                      endAngle: CGFloat(1.5 * .pi),
+                                      clockwise: true)
+        // circle shape
+        let circleShape = CAShapeLayer()
+        circleShape.path = circlePath.cgPath
+        circleShape.strokeColor = UIColor.white.cgColor
+        circleShape.fillColor = UIColor.clear.cgColor
+        circleShape.lineWidth = 10.0
+        // set start and end values
+        circleShape.strokeStart = 0.0
+        circleShape.strokeEnd = CGFloat(CGFloat(self.scoreInt ?? 0)/CGFloat(100))
+
+        // add sublayer
+        self.cellImageView.layer.addSublayer(circleShape)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -87,9 +174,16 @@ class MainTableViewCell: UITableViewCell {
         }
     }
     
+    var scoreInt : Int?{
+        didSet{
+            setScoreRound()
+        }
+    }
+    
     func populate(place : Place){
 //        title.text = place.title_eng
         score.text = String(place.score)
+        self.scoreInt = place.score
         cellDescription.text = place.description
         label.text = place.title_eng
         let image_ = URL(string: place.img_url)!
