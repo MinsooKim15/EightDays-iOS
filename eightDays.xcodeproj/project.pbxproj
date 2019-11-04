@@ -22,7 +22,8 @@
 		026224672365BE8F008DD7E0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026224662365BE8F008DD7E0 /* MainTableViewCell.swift */; };
 		026224692365BFBC008DD7E0 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026224682365BFBC008DD7E0 /* MainTableViewController.swift */; };
 		02F1D95A2365E340003449BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F1D9592365E340003449BE /* GoogleService-Info.plist */; };
-		02F2EE25236EC3AB00195B95 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2EE24236EC3AB00195B95 /* GradientView.swift */; };
+		02F2EE27236EE0B700195B95 /* CurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2EE26236EE0B700195B95 /* CurationTableViewCell.swift */; };
+		02F2EE29236EE34E00195B95 /* CurationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2EE28236EE34E00195B95 /* CurationCollectionViewCell.swift */; };
 		0E2F9A0FF166912EBFF30B9B /* Pods_eightDays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F94D76FB157099D5D8D3E3 /* Pods_eightDays.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,8 @@
 		026224662365BE8F008DD7E0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		026224682365BFBC008DD7E0 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		02F1D9592365E340003449BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../dev/deep learning/Lecture5/Week3/Trigger word detection/raw_data/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		02F2EE24236EC3AB00195B95 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		02F2EE26236EE0B700195B95 /* CurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationTableViewCell.swift; sourceTree = "<group>"; };
+		02F2EE28236EE34E00195B95 /* CurationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationCollectionViewCell.swift; sourceTree = "<group>"; };
 		13F94D76FB157099D5D8D3E3 /* Pods_eightDays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eightDays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C341A1509626D7590F9AA3B8 /* Pods-eightDays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eightDays.release.xcconfig"; path = "Target Support Files/Pods-eightDays/Pods-eightDays.release.xcconfig"; sourceTree = "<group>"; };
 		C5F3A6A020FC4ED4052F964F /* Pods-eightDays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eightDays.debug.xcconfig"; path = "Target Support Files/Pods-eightDays/Pods-eightDays.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,7 +101,8 @@
 				02114815235C37B7003E77F0 /* eightDays.xcdatamodeld */,
 				02F1D9592365E340003449BE /* GoogleService-Info.plist */,
 				026224662365BE8F008DD7E0 /* MainTableViewCell.swift */,
-				02F2EE24236EC3AB00195B95 /* GradientView.swift */,
+				02F2EE26236EE0B700195B95 /* CurationTableViewCell.swift */,
+				02F2EE28236EE34E00195B95 /* CurationCollectionViewCell.swift */,
 			);
 			path = eightDays;
 			sourceTree = "<group>";
@@ -239,10 +242,11 @@
 			files = (
 				02114817235C37B7003E77F0 /* eightDays.xcdatamodeld in Sources */,
 				026224672365BE8F008DD7E0 /* MainTableViewCell.swift in Sources */,
-				02F2EE25236EC3AB00195B95 /* GradientView.swift in Sources */,
 				02114811235C37B7003E77F0 /* ViewController.swift in Sources */,
+				02F2EE29236EE34E00195B95 /* CurationCollectionViewCell.swift in Sources */,
 				024180E52369D54900185690 /* MainNavigationController.swift in Sources */,
 				0211480D235C37B7003E77F0 /* AppDelegate.swift in Sources */,
+				02F2EE27236EE0B700195B95 /* CurationTableViewCell.swift in Sources */,
 				0262245F2365AEC9008DD7E0 /* Place.swift in Sources */,
 				026224612365AFF1008DD7E0 /* Weather.swift in Sources */,
 				026224652365B0DE008DD7E0 /* Flight.swift in Sources */,

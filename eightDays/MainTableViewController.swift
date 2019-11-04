@@ -32,6 +32,7 @@ class MainTableViewController: UITableViewController {
         db = Firestore.firestore()
         getMainPlace()
         setNavigationBar()
+        getCuration()
         
         //여기까지
 //        addDocument()
@@ -50,13 +51,16 @@ class MainTableViewController: UITableViewController {
         self.navigationItem.title = "이름이다."
         self.navigationController?.navigationBar.tintColor = .white
         
+        //네비게이션 바 밑의 선을 없애기 위한 코드
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
         //TODO : Menu Button이 들어와야 할 자리임.
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(menuTapped))
         //TODO : Search Button이 들어와야 할 자리임.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(searchTapped))
         self.navigationController?.navigationBar.barTintColor = .brightCyan
         self.navigationController?.navigationBar.isTranslucent = false
-
     }
 
     override func viewDidAppear(_ animated:Bool){
@@ -76,6 +80,7 @@ class MainTableViewController: UITableViewController {
 
     private var places: [Place] = []
     private var documents : [DocumentSnapshot] = []
+    private var curations : [Curation] = []
     
     func addDocument(){
         print("add Document")
@@ -98,9 +103,9 @@ class MainTableViewController: UITableViewController {
         let placeRef = db.collection("place")
         placeRef.order(by: "score", descending: true).limit(to: 1)
         placeRef.getDocuments(){(querySnapshot, err) in
-            print("==================")
-            print(querySnapshot!.documents[0].data())
-            print("==================")
+//            print("==================")
+//            print(querySnapshot!.documents[0].data())
+//            print("==================")
             if let err = err{
                 print("Error getting documents: \(err)")
             }else{
@@ -119,9 +124,55 @@ class MainTableViewController: UITableViewController {
         }
     }
     func getCuration(){
-        print("getCuration")
-        //아.. 그러면 다시 collection view 넣어야 하는데 난이도가 폭발이네..
+        print("getCurations")
+        let curationRef = db.collection("curation")
+        curationRef.order(by:"rank", descending: false).limit(to:1)
+        curationRef.getDocuments(){(querySnapshot, err) in
+            
+            if let err = err{
+                print("Error getting documents: \(err)")
+            }else{
+                print("==================")
+                print(querySnapshot!.documents[0].data())
+                print("==================")
+                let models = querySnapshot!.documents.map{
+                    (document) -> Curation in if let model = Curation(dictionary: document.data()){
+                        return model
+                    }else{
+                        fatalError("Unable to initialize type \(Curation.self) with dictionary")
+                    }
+                }
+                print(models)
+                self.curations = models
+                // for 문으로 nsarray를 place화
+                for (index,_) in self.curations.enumerated() {
+                    self.curations[index].arrayToSmallPlace()
+                }
+                print("변환 결과")
+                print(self.curations[0].placeList!)
+                print(self.curations[0].hasConverted)
+                
+//                for i in self.curations[0].placeList{
+//                    // NSArray를 smallplace로 변경을 어디서 해야하지..
+//                    print("뭔가를 성공했다?")
+//
+////                    if let newArray = i as? Dictionary<String,AnyObject>{
+////                        if let newArrayToString = newArray as? [String:Any]{
+////                            print(newArrayToString)
+////                            print("일단 형태를 대충 바꿨으니, 이제 place로 바꿀 수 있나")
+////                            let smallPlace = SmallPlace(dictionary: newArrayToString)
+////                            print("이것도 해내었나?")
+////                            print(smallPlace)
+////                        }
+////                    }
+//                    print("으으음??")
+//                }
+            }
+        }
     }
+    
+    
+    
     
     
     // MARK: - Table view data source
@@ -133,15 +184,17 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        // curation list 개수와 고정으로 하나있는 main table view cell
+        return (curations.count + 1)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mainTableViewCell", for: indexPath) as! MainTableViewCell
+        
         //아직 안 만들었는데, 요거 좋은 거 같아 한 줄로 데이터 밀어 넣고, 실제 데이터 받아내는 메소드는 cell에서 구현하기
 //        print("안녕 프린트는 잘 된단다")
         print(places.count)
         if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mainTableViewCell", for: indexPath) as! MainTableViewCell
             // 아래는 첫 셀에 gradient를 입히는 코드입니다.
             // 이것도 따로 메소드화 해야 하는데, cell이 이 내부에만 정의되는 것이어서, 어떻게 해야 할지 감이 없네요.
             let gradient: CAGradientLayer = CAGradientLayer()
@@ -156,12 +209,16 @@ class MainTableViewController: UITableViewController {
             cell.layer.insertSublayer(gradient, at: 0)
             // 이 위까지요.
             
-            var place = places[indexPath.row]
+            let place = places[indexPath.row]
             cell.populate(place:place)
-            
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "curationTableViewCell", for : indexPath) as! CurationTableViewCell
+            let curation = curations[indexPath.row - 1]
+            cell.populate(curation:curation)
+            return cell
         }
         
-        return cell
     }
     func makeGradient(){
         
@@ -341,5 +398,11 @@ extension UIColor {
   @nonobjc class var darkSkyBlue: UIColor {
     return UIColor(red: 78.0 / 255.0, green: 140.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
   }
+  @nonobjc class var steel: UIColor {
+      return UIColor(red: 126.0 / 255.0, green: 126.0 / 255.0, blue: 130.0 / 255.0, alpha: 1.0)
+    }
+    @nonobjc class var darkSkyBlueTwo: UIColor {
+      return UIColor(red: 79.0 / 255.0, green: 143.0 / 255.0, blue: 225.0 / 255.0, alpha: 1.0)
+    }
 
 }

@@ -11,9 +11,9 @@ import FirebaseFirestore
 
 struct Place {
     var title_kor : String
-    var title_eng : String
+    var title_eng : String?
     var subtitle : String
-    var description : String
+    var description : String?
     var img_url : String
     var score : Int
     
@@ -61,6 +61,108 @@ extension Place {
         )
         }
 }
+
+struct Curation {
+    var title : String
+    var placeListNS : NSArray
+    var placeList : [SmallPlace]?
+    var rank : Int
+    var dictionary : [String: Any]{
+        return [
+            "title": title,
+            "rank" : rank,
+            "placeListNS": placeListNS
+        ]
+    }
+    var hasConverted : Bool
+    
+    mutating func arrayToSmallPlace(){
+        for i in self.placeListNS{
+            print("뭔가를 성공했다?")
+            if let newArray = i as? Dictionary<String,AnyObject>{
+                if let newArrayToString = newArray as? [String:Any]{
+                    print(newArrayToString)
+                    print("일단 형태를 대충 바꿨으니, 이제 place로 바꿀 수 있나")
+                    guard let smallPlace = SmallPlace(dictionary: newArrayToString) else { print("변환 실패"); return }
+                    print("이것도 해내었나?")
+                    if self.placeList == nil {
+                        self.placeList = [SmallPlace]()
+                    }
+                    placeList!.append(smallPlace)
+                    self.hasConverted = true //하나라도 컨버팅했으면 true.
+                    print("성공했습니다. 변환")
+                }
+            }
+            print("으으음??")
+        }
+    }
+//    func arrayToSmallPlace(){
+//        for i in self.placeList{
+//            if let newArray = i as? Dictionary<String,AnyObject>{
+//                print("뭔가를 성공했다.!!!!!")
+//                print(newArray)
+//            }
+//            print("으으음??")
+//        }
+//    }
+    
+}
+extension Curation {
+    init?(dictionary: [String:Any]){
+        guard let title = dictionary["title"] as? String,
+            let placeListNS = dictionary["list_of_places"] as? NSArray,
+            let rank = dictionary["rank"] as? Int
+            else{return nil}
+        self.init(title:title,
+                  placeListNS : placeListNS,
+                  rank: rank,
+                  hasConverted : false
+        )
+    }
+}
+
+// TODO: 일단 원래 데이터형을 손대기 싫어서 SmallPlace라는 임시 자료형을 만들었음.
+// TODO: 후에 conditional 잘 써서 합칩시다.
+
+struct SmallPlace {
+    var title_kor : String
+    var subtitle : String
+    var img_url : String
+    var score : Int
+    var reference : DocumentReference
+    
+    var dictionary: [String: Any]{
+        return [
+            "title_kor" : title_kor,
+            "subtitle" : subtitle,
+            "img_url" : img_url,
+            "score" : score,
+            "reference" : reference]
+    }
+    //TODO : document -> init 이슈가 있다면 여기부터 고쳐보자
+}
+
+extension SmallPlace {
+    init?(dictionary: [String:Any]){
+        guard let title_kor =  dictionary["title_kor"] as? String,
+//        let title_eng =  dictionary["title_eng"] as? String,
+        let subtitle =  dictionary["subtitle"] as? String,
+//        let description =  dictionary["description"] as? String,
+        let img_url =  dictionary["img_url"] as? String,
+        let score =  dictionary["score"] as? Int,
+        let reference = dictionary["reference"] as? DocumentReference
+            else{return nil}
+        self.init(title_kor : title_kor,
+//                      title_eng : title_eng,
+                      subtitle : subtitle,
+//                      description : description,
+                      img_url : img_url,
+                      score : score,
+                      reference : reference
+        )
+    }
+}
+
     //TODO : document -> init 이슈가 있다면 여기부터 고쳐보자ㅜ documentSerializable이 없는 type이라 이거 구현하다가 뭔지 알아보는거 포기하고, struct안에 init?을 하나 만들었음.
 //extension Place: DocumentSerializable {
 //    init?(dictionary: [String:Any]){
