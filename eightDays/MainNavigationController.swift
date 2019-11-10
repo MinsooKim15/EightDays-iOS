@@ -12,6 +12,7 @@ class MainNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.searchtext
 //        self.navigationBar.backgroundColor = .brightCyan
         // Do any additional setup after loading the view.
     }

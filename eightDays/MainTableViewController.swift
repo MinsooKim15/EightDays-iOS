@@ -14,6 +14,7 @@ class MainTableViewController: UITableViewController {
     //TODO: 스크롤할때마다 메소드들이 우수수 재실행됨..
     //TODO: 갑자기 getdocument 실행 없이 cell들이 실행되어서, places가 빈값이 되어버림 해결하자
     var db: Firestore!
+    
     // MARK : View LifeCycleå
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +38,7 @@ class MainTableViewController: UITableViewController {
         //여기까지
 //        addDocument()
     }
-    @objc
-    func menuTapped(){
-        print("메뉴 버튼 구현해야 합니다!!!")
-    }
-    @objc
-    func searchTapped(){
-        print("검색 버튼 구현해야 합니다!!!")
-    }
+
     //Navigation Bar 기본 설정을 위한 메소드
     func setNavigationBar(){
         //여기부터 밑에는 navigation controller와 관련된 무엇인가를 테스트해보는 곳 입니다.
@@ -55,13 +49,28 @@ class MainTableViewController: UITableViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
-        //TODO : Menu Button이 들어와야 할 자리임.
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(menuTapped))
         //TODO : Search Button이 들어와야 할 자리임.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(searchTapped))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(searchTapped))
+        //TODO : Setting Button이 들어와야 할 자리임.
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(settingTapped))
         self.navigationController?.navigationBar.barTintColor = .brightCyan
         self.navigationController?.navigationBar.isTranslucent = false
     }
+    //Navigation Bar Button 클릭시 세그웨이
+    @objc
+    func searchTapped(sender:UIBarButtonItem){
+        performSegue(withIdentifier: "SearchSegue", sender: sender)
+    }
+    @objc
+    func settingTapped(sender:UIBarButtonItem){
+        performSegue(withIdentifier: "SettingSegue", sender: sender)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+    @IBAction func unwindToMain(_ sender: UIStoryboardSegue){
+        
+    }
+    
 
     override func viewDidAppear(_ animated:Bool){
         super.viewDidAppear(animated)
@@ -406,3 +415,4 @@ extension UIColor {
     }
 
 }
+

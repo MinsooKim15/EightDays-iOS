@@ -56,6 +56,11 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
         return self.placeList?.count ?? 0
     }
     
+    // TODO : 개수가 너무 적으면 좌우로 제대로 움직이지 않는 현상
+    // TODO : 이미지는 마스크 밖으로 벗어나는 현상
+    // TODO : 점수 사이즈 키우고 위치 조절하자
+    // TODO : 제목과 콜렉션 뷰 그리드 시작 위치가 일치하도록 바꾸자
+    
     //TODO : curation cell간 간격이 너무 좁아여.. 이거 수정해야 함.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "curationCollectionViewCell", for :indexPath) as! CurationCollectionViewCell
@@ -63,7 +68,9 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
             cell.populate(smallPlace: placeList_[indexPath.row])
         }
         //코너 둥글게 만들기
+        cell.clipsToBounds = true
         cell.layer.cornerRadius = min(cell.frame.size.height, cell.frame.size.width) / 10.0
+        
 //        /cell.layer.masksToBounds = true
         // 그림자를 만들자
 //        cell.layer.cornerRadius = 15.0
