@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/minsookim/Documents/developer/eightDays/eightDays/PlaceViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:eightDays.xcodeproj">
    </FileRef>
    <FileRef

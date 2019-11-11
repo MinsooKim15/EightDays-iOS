@@ -28,7 +28,11 @@ struct Place {
             "subtitle" : subtitle,
             "description" : description,
             "img_url" : img_url,
-            "score" : score,]
+            "score" : score,
+            "weather" : weather,
+            "hotel" : hotel,
+            "flight" : flight
+        ]
     }
     //TODO : document -> init 이슈가 있다면 여기부터 고쳐보자
     
@@ -44,7 +48,14 @@ extension Place {
         let score =  dictionary["score"] as? Int
         else {
                     return nil}
-
+        // 개별 Model은 있으면 그만 없어도 그만 임.
+        // TODO: 근데 아예 해당 값이 없으면 바로 에러 테트림.. 이거 고쳐야 함.
+        let weatherDictionary = dictionary["weather"] as? [String:Any]
+        let weather = Weather(dictionary : weatherDictionary!)
+        let hotelDictionary = dictionary["hotel"] as? [String:Any]
+        let hotel = Hotel(dictionary : hotelDictionary!)
+        let flightDictionary = dictionary["flight"] as? [String:Any]
+        let flight = Flight(dictionary : flightDictionary!)
 
 //            self.title_kor = title_kor
 //            self.title_eng = title_eng
@@ -57,10 +68,15 @@ extension Place {
                       subtitle : subtitle,
                       description : description,
                       img_url : img_url,
-                      score : score
+                      score : score,
+                      weather : weather,
+                      hotel : hotel,
+                      flight : flight
         )
         }
 }
+
+
 
 struct Curation {
     var title : String
