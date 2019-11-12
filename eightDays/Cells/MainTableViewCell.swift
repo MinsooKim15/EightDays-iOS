@@ -10,7 +10,14 @@ import UIKit
 import AlamofireImage
 import MBCircularProgressBar
 
+protocol MyCustomCellDelegator {
+    func callSegueFromCell(myData dataobject: Any?)
+}
+
+
 class MainTableViewCell: UITableViewCell{
+    var delegate : MyCustomCellDelegator!
+    
     
     //190CGRect(x :, size: CGSize(width : CGFloat(100), height: CGFloat(100)))
     override func awakeFromNib() {
@@ -31,9 +38,21 @@ class MainTableViewCell: UITableViewCell{
         // Label을 생성해서 cellImageView의 가운데에 두는 일은 아래의 메소드에서 합니다.
         adjustLabelToImage()
        
-        
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
+        cellImageView.isUserInteractionEnabled = true
+        cellImageView.addGestureRecognizer(tap)
     }
+    
+    @objc
+    func tapFunction(sender:UITapGestureRecognizer){
+        print("잘 탭되었어요")
+        print(self.delegate)
+//        if (self.delegate != nil){
+            print("델리게이트도 정상")
+            self.delegate.callSegueFromCell(myData: self.place!)
+//        }
+    }
+    
     
     func adjustLabelToImage(){
         //TODO : font 변경해야 함.
@@ -194,9 +213,11 @@ class MainTableViewCell: UITableViewCell{
             setScoreRound()
         }
     }
+    var place : Place?
     
     func populate(place : Place){
         self.scoreInt = place.score
+        self.place = place
         cellDescription.text = place.description
         label.text = place.title_eng
         let image_ = URL(string: place.img_url)!

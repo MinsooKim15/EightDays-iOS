@@ -37,6 +37,7 @@ class PlaceViewController: UIViewController {
     // MARK : Firestore 관련 코드
     var db: Firestore!
     var places : [Place]?
+    var place : Place?
     
     func getMainPlace(byId title : String){
             //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.

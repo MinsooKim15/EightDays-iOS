@@ -75,7 +75,7 @@
                                 <connections>
                                     <outlet property="cellDescription" destination="BKc-fu-jeV" id="FgH-rY-S4d"/>
                                     <outlet property="cellImageView" destination="mVv-5T-VjG" id="QJF-S7-LNg"/>
-                                    <segue destination="GD0-0R-lMm" kind="showDetail" id="QFO-8m-WOU"/>
+                                    <segue destination="GD0-0R-lMm" kind="showDetail" identifier="ContentSegue" id="QFO-8m-WOU"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="curationTableViewCell" rowHeight="446" id="VwN-Vc-QL9" customClass="CurationTableViewCell" customModule="eightDays" customModuleProvider="target">

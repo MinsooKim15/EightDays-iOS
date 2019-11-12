@@ -10,7 +10,11 @@ import UIKit
 import FirebaseFirestore
 import SDWebImage
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, MyCustomCellDelegator {
+    
+    
+    
+    
     //TODO: 스크롤할때마다 메소드들이 우수수 재실행됨..
     //TODO: 갑자기 getdocument 실행 없이 cell들이 실행되어서, places가 빈값이 되어버림 해결하자
     var db: Firestore!
@@ -56,6 +60,13 @@ class MainTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = .brightCyan
         self.navigationController?.navigationBar.isTranslucent = false
     }
+    //Cell에서 요청하는 Segueway처리
+    func callSegueFromCell(myData dataobject: Any?) {
+        print("controller로 잘 넘어옴")
+        self.performSegue(withIdentifier: "ContentSegue", sender: dataobject)
+    }
+    
+    
     //Navigation Bar Button 클릭시 세그웨이
     @objc
     func searchTapped(sender:UIBarButtonItem){
@@ -66,6 +77,12 @@ class MainTableViewController: UITableViewController {
         performSegue(withIdentifier: "SettingSegue", sender: sender)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ContentSegue"){
+            if let senderPlace = sender as! Place? {
+                let destView = segue.destination as! PlaceViewController
+                destView.place = senderPlace
+            }
+        }
     }
     @IBAction func unwindToMain(_ sender: UIStoryboardSegue){
         
@@ -216,6 +233,7 @@ class MainTableViewController: UITableViewController {
                                     height: self.view.frame.size.height)
 
             cell.layer.insertSublayer(gradient, at: 0)
+            cell.delegate = self
             // 이 위까지요.
             
             let place = places[indexPath.row]
