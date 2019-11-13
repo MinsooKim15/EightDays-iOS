@@ -12,6 +12,7 @@ import MBCircularProgressBar
 
 protocol MyCustomCellDelegator {
     func callSegueFromCell(myData dataobject: Any?)
+    
 }
 
 
@@ -22,7 +23,7 @@ class MainTableViewCell: UITableViewCell{
     //190CGRect(x :, size: CGSize(width : CGFloat(100), height: CGFloat(100)))
     override func awakeFromNib() {
         super.awakeFromNib()
-//        setGradientBackground()
+//         setGradientBackground()
         // 줄 바꿈은 단어 단위로..?( 더 해보고 변경 필요하면 바꾸자)
         self.cellDescription.lineBreakMode = .byWordWrapping
         setImageView()
@@ -188,16 +189,16 @@ class MainTableViewCell: UITableViewCell{
         // Configure the view for the selected state
     }
     
-    func setGradientBackground() {
-        let colorTop =  UIColor.brightCyan
-        let colorBottom = UIColor.darkSkyBlue
-
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.bounds
-        self.layer.insertSublayer(gradientLayer, at:0)
-    }
+//    func setGradientBackground() {
+//        let colorTop =  UIColor.brightCyan
+//        let colorBottom = UIColor.darkSkyBlue
+//
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [colorTop, colorBottom]
+//        gradientLayer.locations = [0.0, 1.0]
+//        gradientLayer.frame = self.bounds
+//        self.layer.insertSublayer(gradientLayer, at:0)
+//    }
     
     var label: UILabel!
     

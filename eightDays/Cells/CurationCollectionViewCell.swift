@@ -9,6 +9,7 @@
 import UIKit
 
 class CurationCollectionViewCell: UICollectionViewCell {
+
     override class func awakeFromNib() {
         super.awakeFromNib()
 
@@ -23,7 +24,7 @@ class CurationCollectionViewCell: UICollectionViewCell {
         curationImageView.contentMode = .scaleAspectFill
 //        curationImageView.clipsToBounds = true
         curationImageView.layer.masksToBounds = true
-        
+
     }
     
     

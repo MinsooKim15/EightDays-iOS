@@ -267,16 +267,48 @@
                                             <outlet property="textOnlyTitle" destination="vEA-v6-X54" id="MLm-Nj-aqJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jgq-rY-P95">
-                                        <rect key="frame" x="0.0" y="159" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeMainTableViewCell" rowHeight="380" id="jgq-rY-P95" customClass="PlaceMainTableViewCell" customModule="eightDays" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="159" width="414" height="380"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgq-rY-P95" id="3aP-T0-mfu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ex-sq-k9r">
+                                                    <rect key="frame" x="112" y="48" width="190" height="190"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="190" id="Gx2-qD-g45"/>
+                                                        <constraint firstAttribute="width" constant="190" id="Vnz-Nr-nhl"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨도 맑고 비행기 표도 성수기보다는 싼 편이에요. 환율이 조금 세다는 것이 단점." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzD-3f-0lH">
+                                                    <rect key="frame" x="74.5" y="211" width="253" height="81"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="81" id="QoL-XE-TR9"/>
+                                                        <constraint firstAttribute="width" constant="257" id="pOn-8Q-vku"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6ex-sq-k9r" firstAttribute="leading" secondItem="3aP-T0-mfu" secondAttribute="leading" constant="112" id="CFM-BS-7Ho"/>
+                                                <constraint firstAttribute="bottom" secondItem="tzD-3f-0lH" secondAttribute="bottom" constant="88" id="Gbg-Dn-Kqu"/>
+                                                <constraint firstItem="6ex-sq-k9r" firstAttribute="top" secondItem="3aP-T0-mfu" secondAttribute="top" priority="750" constant="48" id="KWm-f4-uhQ"/>
+                                                <constraint firstItem="tzD-3f-0lH" firstAttribute="top" secondItem="6ex-sq-k9r" secondAttribute="bottom" constant="36" id="MWB-Sw-Qn1"/>
+                                                <constraint firstAttribute="trailing" secondItem="tzD-3f-0lH" secondAttribute="trailing" constant="82.5" id="lhA-OW-ehZ"/>
+                                                <constraint firstItem="tzD-3f-0lH" firstAttribute="leading" secondItem="3aP-T0-mfu" secondAttribute="leading" constant="74.5" id="oqC-0C-gey"/>
+                                                <constraint firstAttribute="trailing" secondItem="6ex-sq-k9r" secondAttribute="trailing" constant="112" id="uKH-tW-1A0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellDescription" destination="tzD-3f-0lH" id="Vwy-C3-9Zj"/>
+                                            <outlet property="cellImageView" destination="6ex-sq-k9r" id="aTu-Hh-oeT"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e3u-97-vGf">
-                                        <rect key="frame" x="0.0" y="203" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="539" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e3u-97-vGf" id="SJF-cN-09h">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -284,7 +316,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="y4f-K6-96t">
-                                        <rect key="frame" x="0.0" y="247" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="583" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y4f-K6-96t" id="TP0-d5-0il">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -292,7 +324,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nDQ-mF-6io">
-                                        <rect key="frame" x="0.0" y="291" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="627" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nDQ-mF-6io" id="rRy-Wy-0am">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -300,7 +332,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eOR-BP-IWJ">
-                                        <rect key="frame" x="0.0" y="335" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="671" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eOR-BP-IWJ" id="lPw-bX-yS0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -313,6 +345,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="SUg-Pf-bPG"/>
                     </view>
+                    <connections>
+                        <outlet property="contentTableView" destination="Aao-Us-KR3" id="Lmo-Mm-YJc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hij-fh-Cn3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -78,12 +78,15 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ContentSegue"){
-            if let senderPlace = sender as! Place? {
+            if let senderPlace = sender as? Place {
                 let destView = segue.destination as! PlaceViewController
                 destView.place = senderPlace
+            }else if let senderSmallPlace = sender as? SmallPlace{
+                let destView = segue.destination as! PlaceViewController
+                destView.smallPlace = senderSmallPlace
+            }
             }
         }
-    }
     @IBAction func unwindToMain(_ sender: UIStoryboardSegue){
         
     }
@@ -233,8 +236,9 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
                                     height: self.view.frame.size.height)
 
             cell.layer.insertSublayer(gradient, at: 0)
-            cell.delegate = self
             // 이 위까지요.
+            cell.delegate = self
+            
             
             let place = places[indexPath.row]
             cell.populate(place:place)
@@ -243,6 +247,7 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
             let cell = tableView.dequeueReusableCell(withIdentifier: "curationTableViewCell", for : indexPath) as! CurationTableViewCell
             let curation = curations[indexPath.row - 1]
             cell.populate(curation:curation)
+            cell.delegate = self
             return cell
         }
         

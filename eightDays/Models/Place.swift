@@ -21,6 +21,7 @@ struct Place {
     var hotel : Hotel?
     var flight : Flight?
     
+    var hasOpDescription = false
     var dictionary: [String: Any]{
         return [
             "title_kor" : title_kor,

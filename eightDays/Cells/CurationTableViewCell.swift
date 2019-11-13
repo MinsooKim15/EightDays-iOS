@@ -9,7 +9,7 @@
 import UIKit
 
 class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionViewDataSource {
-
+    var delegate : MyCustomCellDelegator?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -91,6 +91,13 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
         // 테스트를 위해 임시로 박아둔 백그라운드 컬러
         cell.backgroundColor = UIColor.white
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let placeList_  = self.placeList{
+            print(self.delegate)
+            self.delegate?.callSegueFromCell(myData: placeList_[indexPath.row])
+        }
     }
 }
 

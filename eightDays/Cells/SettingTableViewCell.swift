@@ -39,4 +39,5 @@ class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var settingTitle: UILabel!
     @IBAction func buttonClicked(_ sender: Any) {
     }
+    
 }
