@@ -238,7 +238,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-u4-3uB">
-                                                    <rect key="frame" x="27" y="11" width="29.5" height="29"/>
+                                                    <rect key="frame" x="27" y="11" width="300" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="35b-Pb-PtO"/>
                                                         <constraint firstAttribute="width" constant="300" id="7AK-0U-WO9"/>
@@ -294,7 +294,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4e-dl-vch">
-                                                    <rect key="frame" x="33" y="101" width="48" height="15"/>
+                                                    <rect key="frame" x="33" y="101" width="45" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="48" id="GUe-EJ-490"/>
                                                         <constraint firstAttribute="height" constant="15" id="yLm-XG-z0e"/>
@@ -310,7 +310,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALK-y9-AW4">
-                                                    <rect key="frame" x="179" y="101" width="60" height="15"/>
+                                                    <rect key="frame" x="176" y="101" width="55.5" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="6BQ-rm-qDF"/>
                                                         <constraint firstAttribute="height" constant="15" id="NRc-8l-0bf"/>
@@ -326,7 +326,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv2-KF-jgn">
-                                                    <rect key="frame" x="337" y="101" width="60" height="15"/>
+                                                    <rect key="frame" x="-68.5" y="101" width="52.5" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="Rf8-5G-v96"/>
                                                         <constraint firstAttribute="height" constant="15" id="sNU-az-LlN"/>

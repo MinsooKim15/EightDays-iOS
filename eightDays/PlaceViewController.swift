@@ -52,6 +52,10 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         db = Firestore.firestore()
         contentTableView.dataSource = self
         contentTableView.delegate = self
+        self.view.addSubview(closeButton)
+        closeButton.anchor(top: self.view.topAnchor, left: nil, bottom: nil, right: self.view.rightAnchor, paddingTop: 23, paddingLeft: 0, paddingBottom: 0, paddingRight: 17, width: 32, height: 32, enableInsets: false)
+        print("Yeah")
+        self.view.backgroundColor = .brightCyan
         // Do any additional setup after loading the view.
     }
 //
@@ -64,6 +68,15 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
 //        let cell = self.table
 //           return cell
 //    }
+    
+    var closeButton : CloseButton = {
+        var button = CloseButton()
+        button.frame = CGRect(x: 30, y: 30, width: 32, height: 32)
+        button.backgroundColor = .gunmetal
+        button.layer.cornerRadius = button.frame.height / 2.0
+        button.clipsToBounds = true
+        return button
+    }()
     
     // MARK : Firestore 관련 코드
     var db: Firestore!
@@ -240,6 +253,30 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
 //        }
 //    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.navigationController?.navigationBar.barTintColor = .brightCyan
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
+//        //First Visible Item
+//        print("처음은")
+//        print(self.contentTableView.indexPathsForVisibleRows?.first)
+        if self.contentTableView.indexPathsForVisibleRows?.first != Optional([0,0]) && !self.closeButton.isBlack {
+            print("어둡게")
+            closeButton.isBlack = true
+        }else if self.contentTableView.indexPathsForVisibleRows?.first == Optional([0,0]) && self.closeButton.isBlack{
+            print("밝게")
+            closeButton.isBlack = false
+        }
+//        //Last visible item
+//        print("마지막은")
+//        print(self.contentTableView.indexPathsForVisibleRows?.last)
+    }
+    
     
     @IBOutlet weak var contentTableView: UITableView!
     
@@ -253,4 +290,59 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     */
 
+}
+
+class CloseButton : UIButton{
+    
+    var isBlack = false {
+        didSet{
+            print("바뀜!!")
+            setNeedsDisplay()
+//            if self.isBlack{
+//                self.backgroundColor = .gunmetal
+//                self.line
+//            }else{
+//                self.backgroundColor = .veryLightPink80
+//            }
+        }
+    }
+    
+    override func draw(_ rect: CGRect) {
+
+        var path = UIBezierPath(ovalIn: rect)
+        
+        if isBlack {
+            UIColor.gunmetal.setFill()
+        }else{
+            UIColor.veryLightPink80.setFill()
+        }
+        
+        path.fill()
+        let lineWidth: CGFloat = min(bounds.width, bounds.height) * 0.4
+        let linePath = UIBezierPath()
+        linePath.lineWidth = 2.5
+        
+        // - 선을 그립니다.
+        linePath.move(to: CGPoint(
+            x: (bounds.width / 2) - (lineWidth / 2),
+            y: (bounds.height / 2) - (lineWidth / 2)))
+
+        linePath.addLine(to: CGPoint(
+            x: (bounds.width / 2) + (lineWidth / 2),
+            y: (bounds.height / 2) + (lineWidth / 2)))
+
+        linePath.move(to: CGPoint(
+            x: (bounds.width / 2) - (lineWidth / 2),
+            y: (bounds.height / 2) + (lineWidth / 2)))
+
+        linePath.addLine(to: CGPoint(
+                x: (bounds.width / 2) + (lineWidth / 2),
+                y: (bounds.height / 2) - (lineWidth / 2)))
+        if isBlack {
+            UIColor.lightBlueGreyTwo.setStroke()
+        }else{
+            UIColor.greyishBrown.setStroke()
+        }
+        linePath.stroke()
+    }
 }
