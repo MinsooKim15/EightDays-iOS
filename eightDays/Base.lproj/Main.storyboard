@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cOc-v0-K2t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cOc-v0-K2t">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,11 +11,14 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="eightDays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vAR-bh-8ON"/>
+                        <viewControllerLayoutGuide type="bottom" id="QiA-Li-4uT"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -215,6 +217,10 @@
         <scene sceneID="GNa-vU-HN3">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="GD0-0R-lMm" customClass="PlaceViewController" customModule="eightDays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lW2-kw-KEt"/>
+                        <viewControllerLayoutGuide type="bottom" id="NLP-ut-3jS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Apm-xU-xOe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,8 +230,171 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeExchangeTableViewCell" rowHeight="220" id="Kpf-6Z-7NG">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="220"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kpf-6Z-7NG" id="Imo-EM-y46">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-u4-3uB">
+                                                    <rect key="frame" x="27" y="11" width="29.5" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="35b-Pb-PtO"/>
+                                                        <constraint firstAttribute="width" constant="300" id="7AK-0U-WO9"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="자세한 설명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im3-7c-1Ks">
+                                                    <rect key="frame" x="27" y="40" width="78" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="57" id="Jzb-Lc-rVE"/>
+                                                        <constraint firstAttribute="width" constant="380" id="xGP-vx-ZqN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shr-JL-iWq">
+                                                    <rect key="frame" x="44" y="69" width="74" height="24"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="1900원">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZW-O1-ghw">
+                                                    <rect key="frame" x="170" y="69" width="74" height="24"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="1900원">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL0-6b-sku">
+                                                    <rect key="frame" x="297" y="69" width="74" height="24"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="1900원">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4e-dl-vch">
+                                                    <rect key="frame" x="33" y="101" width="48" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="GUe-EJ-490"/>
+                                                        <constraint firstAttribute="height" constant="15" id="yLm-XG-z0e"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="오늘 환율">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALK-y9-AW4">
+                                                    <rect key="frame" x="179" y="101" width="60" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="6BQ-rm-qDF"/>
+                                                        <constraint firstAttribute="height" constant="15" id="NRc-8l-0bf"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="1주 전 환율 ">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv2-KF-jgn">
+                                                    <rect key="frame" x="337" y="101" width="60" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="Rf8-5G-v96"/>
+                                                        <constraint firstAttribute="height" constant="15" id="sNU-az-LlN"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="1달 전 환율">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="환율이 오르면 호텔 값, 여행 경비가 더 많이 들게 돼요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt3-4x-Utw">
+                                                    <rect key="frame" x="34" y="141" width="296" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="296" id="cP8-ll-Wot"/>
+                                                        <constraint firstAttribute="height" constant="15" id="uT2-iA-fC4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tt3-4x-Utw" firstAttribute="top" secondItem="ALK-y9-AW4" secondAttribute="bottom" priority="750" constant="25" id="2mC-Yj-akc"/>
+                                                <constraint firstItem="sL0-6b-sku" firstAttribute="top" secondItem="Im3-7c-1Ks" secondAttribute="bottom" constant="8" id="JXO-7B-mIR"/>
+                                                <constraint firstItem="bv2-KF-jgn" firstAttribute="top" secondItem="sL0-6b-sku" secondAttribute="bottom" constant="8" id="KhC-Ku-XPm"/>
+                                                <constraint firstItem="bv2-KF-jgn" firstAttribute="leading" secondItem="ALK-y9-AW4" secondAttribute="trailing" constant="98" id="Kqt-8Q-EiL"/>
+                                                <constraint firstItem="tt3-4x-Utw" firstAttribute="leading" secondItem="Imo-EM-y46" secondAttribute="leadingMargin" constant="18" id="Ky9-jA-1oA"/>
+                                                <constraint firstItem="UZW-O1-ghw" firstAttribute="leading" secondItem="shr-JL-iWq" secondAttribute="trailing" constant="80" id="OFO-Xr-jR7"/>
+                                                <constraint firstAttribute="trailing" secondItem="bv2-KF-jgn" secondAttribute="trailing" constant="16" id="OJa-a9-syt"/>
+                                                <constraint firstItem="v4e-dl-vch" firstAttribute="top" secondItem="shr-JL-iWq" secondAttribute="bottom" constant="3" id="OS7-Uf-h9l"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="tt3-4x-Utw" secondAttribute="bottom" constant="17" id="RMI-lw-2Ql"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="tt3-4x-Utw" secondAttribute="trailing" constant="100" id="SUg-F8-zB5"/>
+                                                <constraint firstItem="sL0-6b-sku" firstAttribute="leading" secondItem="UZW-O1-ghw" secondAttribute="trailing" constant="80" id="Sqh-WW-nLa"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Im3-7c-1Ks" secondAttribute="trailing" priority="750" constant="16" id="TLw-zo-T3d"/>
+                                                <constraint firstAttribute="trailing" secondItem="sL0-6b-sku" secondAttribute="trailing" constant="13" id="WdL-xk-3bR"/>
+                                                <constraint firstItem="tt3-4x-Utw" firstAttribute="top" secondItem="bv2-KF-jgn" secondAttribute="bottom" priority="750" constant="25" id="aUx-oG-gX2"/>
+                                                <constraint firstItem="v4e-dl-vch" firstAttribute="leading" secondItem="Imo-EM-y46" secondAttribute="leading" constant="33" id="ckh-lI-gSG"/>
+                                                <constraint firstItem="ALK-y9-AW4" firstAttribute="top" secondItem="UZW-O1-ghw" secondAttribute="bottom" constant="7" id="ds5-Ao-WVc"/>
+                                                <constraint firstItem="9oh-u4-3uB" firstAttribute="top" secondItem="Imo-EM-y46" secondAttribute="top" constant="11" id="eGW-BX-OsA"/>
+                                                <constraint firstItem="UZW-O1-ghw" firstAttribute="top" secondItem="Im3-7c-1Ks" secondAttribute="bottom" constant="8" id="eal-k9-RuH"/>
+                                                <constraint firstAttribute="trailing" secondItem="9oh-u4-3uB" secondAttribute="trailing" constant="357" id="i8n-Zm-DtU"/>
+                                                <constraint firstItem="9oh-u4-3uB" firstAttribute="leading" secondItem="Imo-EM-y46" secondAttribute="leading" constant="27" id="lJm-dT-Irz"/>
+                                                <constraint firstItem="shr-JL-iWq" firstAttribute="leading" secondItem="Imo-EM-y46" secondAttribute="leading" constant="25" id="oIy-NR-49m"/>
+                                                <constraint firstAttribute="bottom" secondItem="v4e-dl-vch" secondAttribute="bottom" constant="104" id="qjk-RX-tzo"/>
+                                                <constraint firstItem="Im3-7c-1Ks" firstAttribute="leading" secondItem="Imo-EM-y46" secondAttribute="leading" constant="18" id="v55-RH-qgx"/>
+                                                <constraint firstItem="ALK-y9-AW4" firstAttribute="leading" secondItem="v4e-dl-vch" secondAttribute="trailing" constant="98" id="wOr-b3-faM"/>
+                                                <constraint firstItem="shr-JL-iWq" firstAttribute="top" secondItem="Im3-7c-1Ks" secondAttribute="bottom" constant="8" id="xS4-qs-eBG"/>
+                                                <constraint firstItem="tt3-4x-Utw" firstAttribute="top" secondItem="v4e-dl-vch" secondAttribute="bottom" constant="25" id="xfs-P7-Fab"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cautionMessage" destination="tt3-4x-Utw" id="ENu-LH-i9D"/>
+                                            <outlet property="monthExchangeDesc" destination="bv2-KF-jgn" id="D2f-Lu-ic0"/>
+                                            <outlet property="monthExchangeValue" destination="sL0-6b-sku" id="txj-5S-wPv"/>
+                                            <outlet property="placeDescription" destination="Im3-7c-1Ks" id="VwW-Po-uA4"/>
+                                            <outlet property="placeTitle" destination="9oh-u4-3uB" id="2QE-cC-D6u"/>
+                                            <outlet property="todayExchangeDesc" destination="v4e-dl-vch" id="wg1-dR-3Xh"/>
+                                            <outlet property="todayExchangeValue" destination="shr-JL-iWq" id="C9q-hB-a15"/>
+                                            <outlet property="weekExchangeDesc" destination="ALK-y9-AW4" id="FLv-SU-JFd"/>
+                                            <outlet property="weekExchangeValue" destination="UZW-O1-ghw" id="aKk-9Z-peP"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="131" id="axt-nD-rXX" customClass="PlaceTextOnlyTableViewCell" customModule="eightDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="131"/>
+                                        <rect key="frame" x="0.0" y="248" width="414" height="131"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="axt-nD-rXX" id="Vgu-w6-faj">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="131"/>
@@ -268,7 +437,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeMainTableViewCell" rowHeight="380" id="jgq-rY-P95" customClass="PlaceMainTableViewCell" customModule="eightDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="159" width="414" height="380"/>
+                                        <rect key="frame" x="0.0" y="379" width="414" height="380"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgq-rY-P95" id="3aP-T0-mfu">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
@@ -307,24 +476,268 @@
                                             <outlet property="cellImageView" destination="6ex-sq-k9r" id="aTu-Hh-oeT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e3u-97-vGf">
-                                        <rect key="frame" x="0.0" y="539" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeWeatherTableViewCell" rowHeight="200" id="e3u-97-vGf" customClass="PlaceWeatherTableViewCell" customModule="eightDays" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="759" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e3u-97-vGf" id="SJF-cN-09h">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-p4-S58">
+                                                    <rect key="frame" x="50" y="21" width="295" height="29"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="제목">
+                                                            <attributes>
+                                                                <font key="NSFont" size="24" name="AppleSDGothicNeo-Bold"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ae-fr-MTd">
+                                                    <rect key="frame" x="321" y="87.5" width="48" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="Nu6-Ah-5qf"/>
+                                                        <constraint firstAttribute="width" constant="48" id="TMc-6q-pG9"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="32도">
+                                                            <attributes>
+                                                                <font key="NSFont" size="20" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="현지 10월 평균 기온" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ab-pg-TKb">
+                                                    <rect key="frame" x="174" y="176" width="0.0" height="0.0"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-vZ-eNz">
+                                                    <rect key="frame" x="40" y="119.5" width="45" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="AIi-3r-bfV"/>
+                                                        <constraint firstAttribute="height" constant="30" id="QXP-iN-Nzd"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="현지">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="AppleSDGothicNeo-Bold"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="평균">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="강수일">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-gI-YtM">
+                                                    <rect key="frame" x="-228" y="119.5" width="48" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="GIx-um-IzS"/>
+                                                        <constraint firstAttribute="width" constant="48" id="xVQ-Da-f0c"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="현지">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="AppleSDGothicNeo-Bold"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" 10">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="월">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="평균">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="기온">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13n-Ou-4dY">
+                                                    <rect key="frame" x="-97" y="119.5" width="45" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="neq-8f-TRY"/>
+                                                        <constraint firstAttribute="height" constant="30" id="qxd-5a-jHj"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="서울">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="AppleSDGothicNeo-Bold"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="현재">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="기온">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                <font key="NSOriginalFont" metaFont="cellTitle"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keQ-SX-4xW">
+                                                    <rect key="frame" x="183" y="87.5" width="48" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="F7K-bi-9Pq"/>
+                                                        <constraint firstAttribute="width" constant="48" id="a06-IG-m2a"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="32도">
+                                                            <attributes>
+                                                                <font key="NSFont" size="20" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzk-ff-XvD">
+                                                    <rect key="frame" x="40" y="87.5" width="48" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="LKt-ab-jMD"/>
+                                                        <constraint firstAttribute="height" constant="24" id="ez6-pP-qZ7"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="32도">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="20" name="AppleSDGothicNeo-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16q-GK-Kxs">
+                                                    <rect key="frame" x="20" y="66" width="380" height="57"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hA2-gI-YtM" secondAttribute="bottom" priority="750" constant="10" id="3pi-7R-RTI"/>
+                                                <constraint firstItem="keQ-SX-4xW" firstAttribute="top" secondItem="16q-GK-Kxs" secondAttribute="bottom" constant="15" id="6Ka-8L-6M6"/>
+                                                <constraint firstItem="lzk-ff-XvD" firstAttribute="leading" secondItem="SJF-cN-09h" secondAttribute="leading" constant="40" id="6MH-N8-McE"/>
+                                                <constraint firstItem="13n-Ou-4dY" firstAttribute="top" secondItem="6ae-fr-MTd" secondAttribute="bottom" constant="8" id="97H-zN-Xe8"/>
+                                                <constraint firstItem="16q-GK-Kxs" firstAttribute="top" secondItem="BTM-p4-S58" secondAttribute="bottom" constant="3" id="I0o-BJ-zDy"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="13n-Ou-4dY" secondAttribute="bottom" priority="750" constant="10" id="M2s-qz-b1o"/>
+                                                <constraint firstItem="keQ-SX-4xW" firstAttribute="leading" secondItem="lzk-ff-XvD" secondAttribute="trailing" constant="95" id="N60-iN-7nz"/>
+                                                <constraint firstItem="bbG-vZ-eNz" firstAttribute="top" secondItem="lzk-ff-XvD" secondAttribute="bottom" constant="8" id="Oxe-7Z-NKs"/>
+                                                <constraint firstItem="13n-Ou-4dY" firstAttribute="leading" secondItem="hA2-gI-YtM" secondAttribute="trailing" constant="83" id="Q9I-2Z-lN6"/>
+                                                <constraint firstItem="BTM-p4-S58" firstAttribute="leading" secondItem="SJF-cN-09h" secondAttribute="leading" constant="18" id="R5R-kc-nJ2"/>
+                                                <constraint firstItem="bbG-vZ-eNz" firstAttribute="leading" secondItem="SJF-cN-09h" secondAttribute="leading" constant="40" id="RbS-md-1Sn"/>
+                                                <constraint firstItem="6ae-fr-MTd" firstAttribute="top" secondItem="16q-GK-Kxs" secondAttribute="bottom" constant="15" id="Rip-9P-WZc"/>
+                                                <constraint firstAttribute="trailing" secondItem="13n-Ou-4dY" secondAttribute="trailing" constant="52" id="Rk4-Vc-QdJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="16q-GK-Kxs" secondAttribute="trailing" constant="16" id="RmF-9l-Kg1"/>
+                                                <constraint firstItem="BTM-p4-S58" firstAttribute="top" secondItem="SJF-cN-09h" secondAttribute="top" constant="21" id="T0h-rR-qkh"/>
+                                                <constraint firstItem="lzk-ff-XvD" firstAttribute="top" secondItem="16q-GK-Kxs" secondAttribute="bottom" constant="15" id="TW6-PG-xWN"/>
+                                                <constraint firstItem="6ae-fr-MTd" firstAttribute="leading" secondItem="keQ-SX-4xW" secondAttribute="trailing" constant="90" id="acn-sz-WYU"/>
+                                                <constraint firstItem="hA2-gI-YtM" firstAttribute="leading" secondItem="bbG-vZ-eNz" secondAttribute="trailing" constant="95" id="e7b-wf-lxO"/>
+                                                <constraint firstItem="hA2-gI-YtM" firstAttribute="top" secondItem="keQ-SX-4xW" secondAttribute="bottom" constant="8" id="gfX-Jj-tC4"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bbG-vZ-eNz" secondAttribute="bottom" priority="750" constant="10" id="j7n-aR-gXM"/>
+                                                <constraint firstItem="16q-GK-Kxs" firstAttribute="leading" secondItem="SJF-cN-09h" secondAttribute="leading" constant="18" id="rwq-9f-NPM"/>
+                                                <constraint firstItem="6ae-fr-MTd" firstAttribute="leading" secondItem="SJF-cN-09h" secondAttribute="leading" constant="321" id="uQM-dI-zXi"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BTM-p4-S58" secondAttribute="trailing" constant="69" id="uSH-h0-ybC"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="y4f-K6-96t">
-                                        <rect key="frame" x="0.0" y="583" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y4f-K6-96t" id="TP0-d5-0il">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="averageSeoulTempDesc" destination="13n-Ou-4dY" id="Rrc-TZ-6eo"/>
+                                            <outlet property="averageSeoulTempValue" destination="6ae-fr-MTd" id="Dff-0i-c8q"/>
+                                            <outlet property="averageTempDesc" destination="hA2-gI-YtM" id="euH-5h-kIn"/>
+                                            <outlet property="averageTempValue" destination="keQ-SX-4xW" id="2o9-S6-ezD"/>
+                                            <outlet property="placeDescription" destination="16q-GK-Kxs" id="Tt9-7H-heR"/>
+                                            <outlet property="placeTitle" destination="BTM-p4-S58" id="dFw-cP-Q40"/>
+                                            <outlet property="raindaysDesc" destination="bbG-vZ-eNz" id="P5p-WT-9FL"/>
+                                            <outlet property="raindaysValue" destination="lzk-ff-XvD" id="w0G-Yz-TgD"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nDQ-mF-6io">
-                                        <rect key="frame" x="0.0" y="627" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="959" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nDQ-mF-6io" id="rRy-Wy-0am">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -332,7 +745,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eOR-BP-IWJ">
-                                        <rect key="frame" x="0.0" y="671" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1003" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eOR-BP-IWJ" id="lPw-bX-yS0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -343,7 +756,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="SUg-Pf-bPG"/>
                     </view>
                     <connections>
                         <outlet property="contentTableView" destination="Aao-Us-KR3" id="Lmo-Mm-YJc"/>
@@ -357,6 +769,10 @@
         <scene sceneID="7eV-KQ-iuF">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="f8M-BB-EUA" customClass="SettingViewController" customModule="eightDays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yQv-tS-ohL"/>
+                        <viewControllerLayoutGuide type="bottom" id="s5l-q6-XFD"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rwa-wX-mkp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,10 +839,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qzH-A4-Klp" firstAttribute="top" secondItem="zJj-r8-DS3" secondAttribute="top" constant="23" id="0bj-za-OZ7"/>
+                            <constraint firstItem="qzH-A4-Klp" firstAttribute="top" secondItem="yQv-tS-ohL" secondAttribute="bottom" constant="23" id="0bj-za-OZ7"/>
                             <constraint firstItem="9QT-p6-sZz" firstAttribute="top" secondItem="qzH-A4-Klp" secondAttribute="bottom" constant="25" id="pHF-93-7Hz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zJj-r8-DS3"/>
                     </view>
                     <connections>
                         <outlet property="settingTableView" destination="9QT-p6-sZz" id="RP7-Jh-nCw"/>
@@ -458,6 +873,10 @@
         <scene sceneID="ZqD-HQ-R7d">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="9eD-Id-1DW" customClass="SearchViewController" customModule="eightDays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Ex-kx-JeM"/>
+                        <viewControllerLayoutGuide type="bottom" id="E6Z-kU-jTf"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cN1-jI-CsM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,7 +897,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="WPK-ZQ-nyg"/>
                     </view>
                     <navigationItem key="navigationItem" id="Jej-Lg-Cga"/>
                     <connections>

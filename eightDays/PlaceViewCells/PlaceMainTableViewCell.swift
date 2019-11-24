@@ -9,7 +9,7 @@
 import UIKit
 
 class PlaceMainTableViewCell: UITableViewCell {
-    
+    //TODO: 얘도 다 코드로 바꾸자(Storyboard 남기지 말기)
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

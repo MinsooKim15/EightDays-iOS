@@ -12,13 +12,40 @@ import SDWebImage
 
 class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
-    
+    //임시용 변수입니다. Firebase에 제대로 데이터 들어가면 삭제 필요함.
+    var temp_exchange : Exchange?
    
+    func makeTempRate()-> [Int]{
+        //임시로 3달 기간 동안의 환율을 보여주는 가짜 데이터 리스트를 만들었습니다.
+        // 매일 10원씩 오릅니다.(미쳤지요)
+        // 하지만 한국을 믿으니 2500을 넘지 않아요
+        var result:[Int] = []
+        var counter = 1100
+        for _ in 1...10 {
+            result.append(counter)
+            if counter <= 2500{
+                counter += 10
+            }
+        }
+        return result
+    }
     //컴파일을 위해 일단 죄다 주석했습니다.
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //임시용 변수입니다. Firebase에 제대로 데이터 들어가면 삭제 필요함.
+        let tempRate = makeTempRate()
+        temp_exchange = Exchange(
+            title: "환율이 치솟고 있어요.",
+            description: "많이 비싼 상태에요. 환율이 계속 오르고 있어요.",
+            exchangeRates: tempRate,
+            todayRate: 3200,
+            weekAgoRate: 2100,
+            monthAgoRate: 1100
+        )
+        self.contentTableView.register(PlaceExchangeTableViewCell.self, forCellReuseIdentifier: "placeExchangeTableViewCell")
+        self.contentTableView.register(PlaceFlightTableViewCell.self, forCellReuseIdentifier: "placeFlightTableViewCell")
+        self.contentTableView.register(PlaceHotelTableViewCell.self, forCellReuseIdentifier: "placeHotelTableViewCell")
         //MARK: Firestore 관련 코드 in viewDidLoad()
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
@@ -86,10 +113,10 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (place?.hasOpDescription ?? false){
             // opDescription이 따로 있다면, 그 내용을 위한 Row를 하나 늘린다.
-            return 5
+            return 6
         }else{
             // 그 외에는 비우는 경우 없이 채운다.
-            return 4
+            return 5
         
         }
     }
@@ -104,7 +131,18 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
             case 0:
                 let cell = getPlaceMainTableViewCell(indexPath: indexPath)
                 return cell
-                
+            case 1 :
+                let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
+                return cell
+            case 2:
+                let cell = getPlaceExchangeTableViewCell(indexPath: indexPath)
+                return cell
+            case 3:
+                let cell = getPlaceFlightTableViewCell(indexPath: indexPath)
+                return cell
+            case 4:
+                let cell = getPlaceHotelTableViewCell(indexPath: indexPath)
+                return cell
             default:
                 let cell = getPlaceMainTableViewCell(indexPath: indexPath)
                 return cell
@@ -131,12 +169,68 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0{
-            return CGFloat(461.3)
-        }else{
-            return CGFloat(349.7) // 여긴 수정 필요함
+    func getPlaceWeatherTableViewCell(indexPath:IndexPath)-> PlaceWeatherTableViewCell{
+        let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeWeatherTableViewCell", for: indexPath) as! PlaceWeatherTableViewCell
+        if let weather_ = self.place?.weather{
+            cell.populate(weather:weather_)
         }
+        return cell
+    }
+    
+    
+    func getPlaceExchangeTableViewCell(indexPath: IndexPath) ->  PlaceExchangeTableViewCell{
+        let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeExchangeTableViewCell", for: indexPath) as! PlaceExchangeTableViewCell
+        print("printExchangeViewCell 호출")
+        // TODO : populate 구현 후 해제
+//        if let exchange_ = self.place?.exchange{
+//            cell.populate(exchange:exchange_)
+//        }
+        if let exchange_  = self.temp_exchange{
+            cell.populate(exchange: exchange_)
+        }
+        return cell
+    }
+    func getPlaceFlightTableViewCell(indexPath: IndexPath) ->  PlaceFlightTableViewCell{
+            let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeFlightTableViewCell", for: indexPath) as! PlaceFlightTableViewCell
+            print("printExchangeViewCell 호출")
+            // TODO : populate 구현 후 해제
+    //        if let exchange_ = self.place?.exchange{
+    //            cell.populate(exchange:exchange_)
+    //        }
+        if let flight  = self.place?.flight{
+                cell.populate(flight: flight)
+        }
+        return cell
+    }
+    func getPlaceHotelTableViewCell(indexPath: IndexPath) ->  PlaceHotelTableViewCell{
+            let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeHotelTableViewCell", for: indexPath) as! PlaceHotelTableViewCell
+            print("printHotelViewCell 호출")
+            // TODO : populate 구현 후 해제
+    //        if let exchange_ = self.place?.exchange{
+    //            cell.populate(exchange:exchange_)
+    //        }
+        if let hotel  = self.place?.hotel{
+                cell.populate(hotel: hotel)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row{
+        case 0:
+            return CGFloat(461.3)
+        case 1:
+            return CGFloat(220.0)
+        case 2:
+            return CGFloat(220.0)
+        case 3:
+            return CGFloat(330.0)
+        case 4:
+            return CGFloat(240.0)
+        default:
+            return CGFloat(220.0)
+        }
+   
     }
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        if indexPath.row == 0{
