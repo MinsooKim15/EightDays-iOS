@@ -32,8 +32,8 @@ class PlaceWeatherTableViewCell: UITableViewCell {
         placeTitle.text = weather.title
         placeDescription.text = weather.description
         raindaysValue.text = String(Int(weather.raindays)) + "일"
-        averageTempValue.text = String(Int(weather.average_temp)) + "°C"
-        averageSeoulTempValue.text = String(Int(weather.seoul_temp)) + "°C"
+        averageTempValue.text = String(Int(weather.averageTemp)) + "°C"
+        averageSeoulTempValue.text = String(Int(weather.seoulTemp)) + "°C"
     }
 
     @IBOutlet weak var placeTitle: UILabel!

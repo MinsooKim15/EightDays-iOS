@@ -117,8 +117,8 @@ class PlaceHotelTableViewCell: UITableViewCell {
         self.placeTitle.text = hotel.title
         self.placeDescription.text = hotel.description
         //TODO : 직접 너무 많은 설정을 해야해서, 설정이 흩어져 있는 것이 신경쓰입니다. 고치자
-        self.luxuryHotelValue.attributedText = NSAttributedString(string: intToString(hotel.luxury_average), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.generalHotelValue.attributedText = NSAttributedString(string: intToString(hotel.general_average), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.luxuryHotelValue.attributedText = NSAttributedString(string: intToString(hotel.luxuryAverage), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.generalHotelValue.attributedText = NSAttributedString(string: intToString(hotel.generalAverage), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
         self.hostelValue.attributedText = NSAttributedString(string:intToString(hotel.hostel), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
     }
     func intToString(_ int:Int)->String{

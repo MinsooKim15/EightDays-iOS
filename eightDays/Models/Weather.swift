@@ -12,16 +12,16 @@ import Firebase
 struct Weather{
     var title : String
     var description : String
-    var average_temp : Float
+    var averageTemp : Float
     var raindays : Float
-    var seoul_temp : Float
+    var seoulTemp : Float
     var dictionary: [String: Any]{
         return [
             "title" : title,
             "description" : description,
-            "average_temp" : average_temp,
+            "averageTemp" : averageTemp,
             "raindays" : raindays,
-            "seoul_temp" : seoul_temp
+            "seoulTemp" : seoulTemp
         ]
     }
 }
@@ -30,9 +30,9 @@ extension Weather {
     init?(dictionary: [String:Any]){
             guard let title =  dictionary["title"] as? String,
         let description =  dictionary["description"] as? String,
-        let average_temp =  dictionary["average_temp"] as? Float,
+        let averageTemp =  dictionary["averageTemp"] as? Float,
         let raindays =  dictionary["raindays"] as? Float,
-        let seoul_temp =  dictionary["seoul_temp"] as? Float
+        let seoulTemp =  dictionary["seoulTemp"] as? Float
         else {print("Weather 유입은 되었는데, Init 실패")
                     return nil}
 
@@ -45,9 +45,9 @@ extension Weather {
 //            self.score = score
             self.init(title : title,
                       description : description,
-                      average_temp : average_temp,
+                      averageTemp : averageTemp,
                       raindays : raindays,
-                      seoul_temp : seoul_temp
+                      seoulTemp : seoulTemp
         )
         }
 }

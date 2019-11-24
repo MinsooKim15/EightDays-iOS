@@ -135,10 +135,10 @@ class PlaceFlightTableViewCell: UITableViewCell {
         self.placeTitle.text = flight.title
         self.placeDescription.text = flight.description
         //TODO : 직접 너무 많은 설정을 해야해서, 설정이 흩어져 있는 것이 신경쓰입니다. 고치자
-        self.todayAverageValue.attributedText = NSAttributedString(string:intToString(flight.today_average), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.todayMinimumValue.attributedText = NSAttributedString(string:intToString(flight.today_minimum), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.monthAgoAverageValue.attributedText = NSAttributedString(string:intToString(flight.month_ago_average), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.monthAgoMinimumValue.attributedText = NSAttributedString(string:intToString(flight.month_ago_minimum), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.todayAverageValue.attributedText = NSAttributedString(string:intToString(flight.todayAverage), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.todayMinimumValue.attributedText = NSAttributedString(string:intToString(flight.todayMinimum), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.monthAgoAverageValue.attributedText = NSAttributedString(string:intToString(flight.monthAgoAverage), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.monthAgoMinimumValue.attributedText = NSAttributedString(string:intToString(flight.monthAgoMinimum), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
     }
     func intToString(_ int:Int)->String{
         let manWon = int / 10000
