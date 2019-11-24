@@ -759,9 +759,11 @@
                     </view>
                     <connections>
                         <outlet property="contentTableView" destination="Aao-Us-KR3" id="Lmo-Mm-YJc"/>
+                        <segue destination="M4m-Kp-vDk" kind="unwind" identifier="unwindToMainTableViewController" unwindAction="unwindMainTableViewController1WithSegue:" id="iL0-Q0-PJg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hij-fh-Cn3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="M4m-Kp-vDk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="908.69565217391312" y="1060.7142857142858"/>
         </scene>

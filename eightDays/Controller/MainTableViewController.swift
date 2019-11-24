@@ -125,6 +125,7 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
             }
         }
     }
+    @IBAction func unwindMainTableViewController1 (segue : UIStoryboardSegue) {}
     
     func getMainPlace(){
         //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
