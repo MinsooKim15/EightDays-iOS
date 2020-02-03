@@ -221,9 +221,15 @@ class MainTableViewCell: UITableViewCell{
         self.place = place
         cellDescription.text = place.description
         label.text = place.title_eng
-        let image_ = URL(string: place.img_url)!
         let placeholderImage = UIImage(named: "boracay")!
-        cellImageView.af_setImage(withURL: image_, placeholderImage : placeholderImage)
+        if let imageUrl  = place.img_url as? String {
+                let image_ = URL(string: imageUrl)
+                print(image_)
+                print("이미지 불러오기 시작")
+                cellImageView.af_setImage(withURL: image_!, placeholderImage : placeholderImage)
+        }else{
+            cellImageView = UIImageView(image:placeholderImage)
+        }
 //        self.layoutSubviews()
 //        cellImageView.downloaded(from: place.img_url)
     }

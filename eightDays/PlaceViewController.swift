@@ -128,6 +128,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("너는 몇번 호출되니?")
         if (place?.hasOpDescription ?? false){
             // opDescription이 따로 있다면, 그 내용을 위한 Row를 하나 늘린다.
             return 6

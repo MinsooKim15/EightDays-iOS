@@ -196,6 +196,7 @@
                                 <connections>
                                     <outlet property="curationCollectionView" destination="tUx-cE-Rho" id="73u-UJ-1H1"/>
                                     <outlet property="curationTitle" destination="Yu3-dW-fAX" id="yWd-Gr-5wD"/>
+                                    <segue destination="f8M-BB-EUA" kind="showDetail" identifier="SettingSegue" id="xFS-db-8Lc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -238,7 +239,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-u4-3uB">
-                                                    <rect key="frame" x="27" y="11" width="300" height="29"/>
+                                                    <rect key="frame" x="27" y="11" width="29.5" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="35b-Pb-PtO"/>
                                                         <constraint firstAttribute="width" constant="300" id="7AK-0U-WO9"/>
@@ -294,7 +295,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4e-dl-vch">
-                                                    <rect key="frame" x="33" y="101" width="45" height="15"/>
+                                                    <rect key="frame" x="33" y="101" width="48" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="48" id="GUe-EJ-490"/>
                                                         <constraint firstAttribute="height" constant="15" id="yLm-XG-z0e"/>
@@ -310,7 +311,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALK-y9-AW4">
-                                                    <rect key="frame" x="176" y="101" width="55.5" height="15"/>
+                                                    <rect key="frame" x="179" y="101" width="60" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="6BQ-rm-qDF"/>
                                                         <constraint firstAttribute="height" constant="15" id="NRc-8l-0bf"/>
@@ -326,7 +327,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv2-KF-jgn">
-                                                    <rect key="frame" x="-68.5" y="101" width="52.5" height="15"/>
+                                                    <rect key="frame" x="337" y="101" width="60" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="Rf8-5G-v96"/>
                                                         <constraint firstAttribute="height" constant="15" id="sNU-az-LlN"/>
@@ -779,62 +780,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z51-Z0-uUv">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z51-Z0-uUv">
                                 <rect key="frame" x="32" y="58" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="QBc-Dt-8NO" kind="unwind" unwindAction="unwindToMain:" id="GDT-0j-chk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzH-A4-Klp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzH-A4-Klp">
                                 <rect key="frame" x="182" y="67" width="30" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9QT-p6-sZz">
-                                <rect key="frame" x="0.0" y="105" width="414" height="791"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9QT-p6-sZz">
+                                <rect key="frame" x="0.0" y="113" width="414" height="783"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingCell" id="oda-Z7-drB" customClass="SettingTableViewCell" customModule="eightDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oda-Z7-drB" id="7n8-Op-BRB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zds-xP-nUV">
-                                                    <rect key="frame" x="16" y="9" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lle-3v-HQa">
-                                                    <rect key="frame" x="186" y="7" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="buttonClicked:" destination="oda-Z7-drB" eventType="touchUpInside" id="qTj-r8-eJK"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nso-By-9rZ">
-                                                    <rect key="frame" x="188" y="9" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="zds-xP-nUV" firstAttribute="top" secondItem="7n8-Op-BRB" secondAttribute="top" constant="9" id="bCH-1P-0mD"/>
-                                                <constraint firstItem="nso-By-9rZ" firstAttribute="top" secondItem="7n8-Op-BRB" secondAttribute="top" constant="9" id="mRJ-U5-hzV"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="moveButton" destination="Lle-3v-HQa" id="u60-6P-MEP"/>
-                                            <outlet property="settingTitle" destination="zds-xP-nUV" id="g0n-XD-ocR"/>
-                                            <outlet property="versionDescription" destination="nso-By-9rZ" id="yT3-ei-okI"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -842,7 +811,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qzH-A4-Klp" firstAttribute="top" secondItem="yQv-tS-ohL" secondAttribute="bottom" constant="23" id="0bj-za-OZ7"/>
+                            <constraint firstItem="z51-Z0-uUv" firstAttribute="leading" secondItem="rwa-wX-mkp" secondAttribute="leadingMargin" constant="12" id="ARK-9k-O9g"/>
+                            <constraint firstItem="9QT-p6-sZz" firstAttribute="top" secondItem="z51-Z0-uUv" secondAttribute="bottom" constant="17" id="FD4-zV-uxB"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="9QT-p6-sZz" secondAttribute="bottom" constant="-34" id="GPw-zg-nHr"/>
+                            <constraint firstItem="9QT-p6-sZz" firstAttribute="leading" secondItem="rwa-wX-mkp" secondAttribute="leadingMargin" constant="-20" id="fWR-Wg-bSB"/>
                             <constraint firstItem="9QT-p6-sZz" firstAttribute="top" secondItem="qzH-A4-Klp" secondAttribute="bottom" constant="25" id="pHF-93-7Hz"/>
+                            <constraint firstItem="9QT-p6-sZz" firstAttribute="centerX" secondItem="rwa-wX-mkp" secondAttribute="centerX" id="t2N-zI-pul"/>
+                            <constraint firstItem="qzH-A4-Klp" firstAttribute="leading" secondItem="rwa-wX-mkp" secondAttribute="leading" constant="182" id="xLN-fs-bRJ"/>
                         </constraints>
                     </view>
                     <connections>

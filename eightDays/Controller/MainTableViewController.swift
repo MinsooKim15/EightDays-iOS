@@ -19,7 +19,7 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
     //TODO: 갑자기 getdocument 실행 없이 cell들이 실행되어서, places가 빈값이 되어버림 해결하자
     var db: Firestore!
     
-    // MARK : View LifeCycleå
+    // MARK : View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,8 +53,9 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        //TODO : Search Button이 들어와야 할 자리임.
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(searchTapped))
+//        //TODO : Search Button이 들어와야 할 자리임.
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(searchTapped))
+        // 일단 없앱니다. -> 고도화시 검색 기능 추가하기
         //TODO : Setting Button이 들어와야 할 자리임.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(settingTapped))
         self.navigationController?.navigationBar.barTintColor = .brightCyan
@@ -74,6 +75,7 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
     }
     @objc
     func settingTapped(sender:UIBarButtonItem){
+        print("Setting Tapped")
         performSegue(withIdentifier: "SettingSegue", sender: sender)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -131,14 +133,18 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
         print("getDocument")
         let placeRef = db.collection("place")
-        placeRef.order(by: "score", descending: true).limit(to: 1)
-        placeRef.getDocuments(){(querySnapshot, err) in
+        placeRef.order(by: "score", descending: false).limit(to: 1).getDocuments(){(querySnapshot, err) in
             //            print("==================")
             //            print(querySnapshot!.documents[0].data())
             //            print("==================")
             if let err = err{
                 print("Error getting documents: \(err)")
             }else{
+                for item in querySnapshot!.documents{
+                    print(item.data()["titleKor"])
+                    print(item.data()["score"])
+                }
+//                print(querySnapshot!.documents[0].data()["titleKor"])
                 let models = querySnapshot!.documents.map{
                     (document) -> Place in if let model = Place(dictionary: document.data()){
                         return model
@@ -451,6 +457,9 @@ extension UIColor {
      }
     @nonobjc class var lightBlueGreyTwo: UIColor {
       return UIColor(red: 207.0 / 255.0, green: 207.0 / 255.0, blue: 208.0 / 255.0, alpha: 1.0)
+    }
+    @nonobjc class var darkSkyBlueThree: UIColor {
+      return UIColor(red: 79.0 / 255.0, green: 144.0 / 255.0, blue: 225.0 / 255.0, alpha: 1.0)
     }
 }
 

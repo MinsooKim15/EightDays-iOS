@@ -10,13 +10,22 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var settingList = [Setting]()
-    
+//    var settingList : [Setting] = {
+//
+//        return settingList
+//    }()
+    var settingList : [Setting]?{
+        didSet{
+            loadViewIfNeeded()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.settingTableView.delegate = self
-        self.settingTableView.dataSource = self
+        settingTableView.delegate = self
+        settingTableView.dataSource = self
+        print("settingViewController생성")
+        self.settingTableView.register(SettingTableViewCell.self, forCellReuseIdentifier: "settingTableViewCell")
         populateSettingList()
     }
     
@@ -25,31 +34,57 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func populateSettingList(){
         settingList = [
-            Setting(title: "공지사항", havePage: true),
-            Setting(
-                title: "앱 버전",
-                havePage: false,
-                currentVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-                recentVersion: "2.3.444"),
-            Setting(title: "오픈소스 라이선스", havePage: true),
-            Setting(title: "개인정보처리방침",havePage:true),
-            Setting(title: "개발자 정보", havePage: true)
-        ]
+                    Setting(title: "공지사항", havePage: true),
+                    Setting(
+                        title: "앱 버전",
+                        havePage: false,
+                        currentVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                        recentVersion: "2.3.444"),
+                    Setting(title: "오픈소스 라이선스", havePage: true),
+                    Setting(title: "개인정보처리방침",havePage:true),
+                    Setting(title: "개발자 정보", havePage: true)
+                ]
     }
     
     
     @IBOutlet weak var settingTableView: UITableView!
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingList.count
+        if let settingList = settingList {
+            print(settingList.count)
+            print("얘는 왜 여러번 호출될까")
+            return settingList.count
+        }else{
+            return 1
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        print("height For Row at")
+        return CGFloat(50)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as! SettingTableViewCell
-        let setting = settingList[indexPath.row]
-        cell.populate(setting:setting)
-        return cell
+        print("얘는 왜 호출되지 않는가")
+        if let settingList = settingList {
+            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "settingTableViewCell", for: indexPath) as! SettingTableViewCell
+            let setting = settingList[indexPath.row]
+            cell.populate(setting:setting)
+            print("cell 동작!")
+            print(indexPath.row)
+            return cell
+        }else{
+            let cell = self.settingTableView.dequeueReusableCell(withIdentifier: "settingTableViewCell", for: indexPath) as! SettingTableViewCell
+//            let setting = settingList[indexPath.row]
+//            cell.populate(setting:setting)
+            print("cell 동작!")
+            print(indexPath.row)
+            return cell
+        }
+        
     }
     
     

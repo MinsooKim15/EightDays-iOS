@@ -10,11 +10,11 @@ import Foundation
 import FirebaseFirestore
 
 struct Place {
-    var title_kor : String
+    var title_kor : String //이거는 수정을 못함 ㅜㅜ 변수명 변경의 영향이 파악도 안됨 ㅜㅜ
     var title_eng : String?
     var subtitle : String
     var description : String?
-    var img_url : String
+    var img_url : String?
     var score : Int
     
     var weather : Weather?
@@ -22,41 +22,57 @@ struct Place {
     var flight : Flight?
     
     var hasOpDescription = false
-    var dictionary: [String: Any]{
-        return [
-            "title_kor" : title_kor,
-            "title_eng" : title_eng,
-            "subtitle" : subtitle,
-            "description" : description,
-            "img_url" : img_url,
-            "score" : score,
-            "weather" : weather,
-            "hotel" : hotel,
-            "flight" : flight
-        ]
-    }
+    // 요 아래의 dictionary의 정체를 발견하는 것이 첫번째 목표임 -> 필요 없는 듯
+//    var dictionary: [String: Any]{
+//        return [
+//            "title_kor" : title_kor,
+//            "title_eng" : title_eng,
+//            "subtitle" : subtitle,
+//            "description" : description,
+//            "img_url" : img_url,
+//            "score" : score,
+//            "weather" : weather,
+//            "hotel" : hotel,
+//            "flight" : flight
+//        ]
+//    }
     //TODO : document -> init 이슈가 있다면 여기부터 고쳐보자
     
 }
 
 extension Place {
     init?(dictionary: [String:Any]){
-            guard let title_kor =  dictionary["title_kor"] as? String,
-        let title_eng =  dictionary["title_eng"] as? String,
+        guard let titleKor =  dictionary["titleKor"] as? String,
+        let titleEng =  dictionary["titleEng"] as? String,
         let subtitle =  dictionary["subtitle"] as? String,
-        let description =  dictionary["description"] as? String,
-        let img_url =  dictionary["img_url"] as? String,
+//        let description =  dictionary["description"] as? String,
+        
         let score =  dictionary["score"] as? Int
         else {
-                    return nil}
+            print("메인데이터가 틀렸어")
+            return nil}
         // 개별 Model은 있으면 그만 없어도 그만 임.
         // TODO: 근데 아예 해당 값이 없으면 바로 에러 테트림.. 이거 고쳐야 함.
-        let weatherDictionary = dictionary["weather"] as? [String:Any]
-        let weather = Weather(dictionary : weatherDictionary!)
-        let hotelDictionary = dictionary["hotel"] as? [String:Any]
-        let hotel = Hotel(dictionary : hotelDictionary!)
-        let flightDictionary = dictionary["flight"] as? [String:Any]
-        let flight = Flight(dictionary : flightDictionary!)
+        let description = dictionary["desctiption"] as? String
+        let imgUrl =  dictionary["img_url"] as? String
+        var weather : Weather?
+        if let weatherDictionary = dictionary["weather"] as? [String:Any]{
+            weather = Weather(dictionary : weatherDictionary)
+        }else{
+            weather = nil
+        }
+        var hotel : Hotel?
+        if let hotelDictionary = dictionary["hotel"] as? [String:Any]{
+            hotel = Hotel(dictionary : hotelDictionary)
+        }else{
+            hotel = nil
+        }
+        var flight : Flight?
+        if let flightDictionary = dictionary["flight"] as? [String:Any]{
+            flight = Flight(dictionary : flightDictionary)
+        }else{
+            flight = nil
+        }
 
 //            self.title_kor = title_kor
 //            self.title_eng = title_eng
@@ -64,18 +80,59 @@ extension Place {
 //            self.description = description
 //            self.img_url = img_url
 //            self.score = score
-            self.init(title_kor : title_kor,
-                      title_eng : title_eng,
+            self.init(title_kor : titleKor,
+                      title_eng : titleEng,
                       subtitle : subtitle,
                       description : description,
-                      img_url : img_url,
+                      img_url : imgUrl,
                       score : score,
                       weather : weather,
                       hotel : hotel,
                       flight : flight
         )
         }
+    
 }
+
+
+// 요 바로 밑의 내용은 전체 Init 변경 전의 코드임. 망하면 살린다.
+//extension Place {
+//    init?(dictionary: [String:Any]){
+//            guard let title_kor =  dictionary["title_kor"] as? String,
+//        let title_eng =  dictionary["title_eng"] as? String,
+//        let subtitle =  dictionary["subtitle"] as? String,
+//        let description =  dictionary["description"] as? String,
+//        let img_url =  dictionary["img_url"] as? String,
+//        let score =  dictionary["score"] as? Int
+//        else {
+//                    return nil}
+//        // 개별 Model은 있으면 그만 없어도 그만 임.
+//        // TODO: 근데 아예 해당 값이 없으면 바로 에러 테트림.. 이거 고쳐야 함.
+//        let weatherDictionary = dictionary["weather"] as? [String:Any]
+//        let weather = Weather(dictionary : weatherDictionary!)
+//        let hotelDictionary = dictionary["hotel"] as? [String:Any]
+//        let hotel = Hotel(dictionary : hotelDictionary!)
+//        let flightDictionary = dictionary["flight"] as? [String:Any]
+//        let flight = Flight(dictionary : flightDictionary!)
+//
+////            self.title_kor = title_kor
+////            self.title_eng = title_eng
+////            self.subtitle = subtitle
+////            self.description = description
+////            self.img_url = img_url
+////            self.score = score
+//            self.init(title_kor : title_kor,
+//                      title_eng : title_eng,
+//                      subtitle : subtitle,
+//                      description : description,
+//                      img_url : img_url,
+//                      score : score,
+//                      weather : weather,
+//                      hotel : hotel,
+//                      flight : flight
+//        )
+//        }
+//}
 
 
 

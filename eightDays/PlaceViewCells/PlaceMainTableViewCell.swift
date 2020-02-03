@@ -143,7 +143,6 @@ class PlaceMainTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     func populate(place : Place){
@@ -152,11 +151,18 @@ class PlaceMainTableViewCell: UITableViewCell {
         //            self.place = place
         cellDescription.text = place.description
         label.text = place.title_eng
-        let image_ = URL(string: place.img_url)!
-        print(image_)
-        print("이미지 불러오기 시작")
         let placeholderImage = UIImage(named: "boracay")!
-        cellImageView.af_setImage(withURL: image_, placeholderImage : placeholderImage)
+        // 아래는 만약 URL이 비어있을 때 특정 PlaceHolder를 채우기 위한 코드입니다.
+        if let imageUrl  = place.img_url as? String {
+                let image_ = URL(string: imageUrl)
+                print(image_)
+                print("이미지 불러오기 시작")
+                
+                cellImageView.af_setImage(withURL: image_!, placeholderImage : placeholderImage)
+        }else{
+            cellImageView = UIImageView(image:placeholderImage)
+        }
+//        cellImageView.setIm
         //        self.layoutSubviews()
         //        cellImageView.downloaded(from: place.img_url)
     }
