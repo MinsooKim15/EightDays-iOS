@@ -167,6 +167,7 @@ class PlaceMainTableViewCell: UITableViewCell {
         //        cellImageView.downloaded(from: place.img_url)
     }
     
-    @IBOutlet weak var cellImageView: UIImageView!
+    //TODO : Weak를 삭제했음 자동 dealloc을 해결하려고 - 문제 있을지 보자
+    @IBOutlet var cellImageView: UIImageView!
     @IBOutlet weak var cellDescription: UILabel!
 }

@@ -11,6 +11,10 @@ import FirebaseFirestore
 import SDWebImage
 
 class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    // TODO : 코드가 이해가 잘 안 된다ㅜ
+    // 항상 안정적인 Place를 호출해야 한다.
+    // Place 호출 시점은 속도가 가장 안 느려지는 시점을 찾자.
+    // 임시 변수 다 날려
     
     //임시용 변수입니다. Firebase에 제대로 데이터 들어가면 삭제 필요함.
     var temp_exchange : Exchange?
@@ -56,6 +60,9 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         closeButton.anchor(top: self.view.topAnchor, left: nil, bottom: nil, right: self.view.rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 17, width: 32, height: 32, enableInsets: false)
         print("Yeah")
         self.view.backgroundColor = .brightCyan
+        print("Place 데이터 확인")
+        print(place?.cellCount)
+        print(place?.listOfUsefulData)
         // Do any additional setup after loading the view.
     }
 //
@@ -129,14 +136,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("너는 몇번 호출되니?")
-        if (place?.hasOpDescription ?? false){
-            // opDescription이 따로 있다면, 그 내용을 위한 Row를 하나 늘린다.
-            return 6
-        }else{
-            // 그 외에는 비우는 경우 없이 채운다.
-            return 5
-        
-        }
+        return (place?.cellCount ?? 0)+1 // 미리 Model에서 Cell에 필요한 데이터 개수를 카운트해둠.
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,27 +145,30 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
             let cell = getPlaceMainTableViewCell(indexPath: indexPath)
             return cell
         }else{
-            switch indexPath.row {
-            case 0:
+            if (indexPath.row) == 0{
                 let cell = getPlaceMainTableViewCell(indexPath: indexPath)
                 return cell
-            case 1 :
-                let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
-                return cell
-            case 2:
-                let cell = getPlaceExchangeTableViewCell(indexPath: indexPath)
-                return cell
-            case 3:
-                let cell = getPlaceFlightTableViewCell(indexPath: indexPath)
-                return cell
-            case 4:
-                let cell = getPlaceHotelTableViewCell(indexPath: indexPath)
-                return cell
-            default:
-                let cell = getPlaceMainTableViewCell(indexPath: indexPath)
-                return cell
+            }else{
+                switch (place?.listOfUsefulData?[indexPath.row - 1]){
+                    case is(Flight):
+                    let cell = getPlaceFlightTableViewCell(indexPath: indexPath)
+                    return cell
+                case is(Exchange):
+                    let cell = getPlaceExchangeTableViewCell(indexPath: indexPath)
+                    return cell
+                case is(Weather):
+                    let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
+                    return cell
+                default:
+                    let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
+                    return cell
             }
+            print("!!!!!!!!!!")
+            print(indexPath.row)
+            print(place?.listOfUsefulData?[indexPath.row])
+
         }
+    }
     }
     func getPlaceMainTableViewCell(indexPath: IndexPath)->PlaceMainTableViewCell{
         //PlaceMainTableViewCell을 만들어 주는 코드입니다.

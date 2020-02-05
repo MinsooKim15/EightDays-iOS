@@ -133,7 +133,8 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
         print("getDocument")
         let placeRef = db.collection("place")
-        placeRef.order(by: "score", descending: false).limit(to: 1).getDocuments(){(querySnapshot, err) in
+        placeRef.order(by: "titleKor", descending: false).limit(to: 1).getDocuments(){(querySnapshot, err) in
+//        placeRef.
             //            print("==================")
             //            print(querySnapshot!.documents[0].data())
             //            print("==================")
@@ -143,6 +144,9 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
                 for item in querySnapshot!.documents{
                     print(item.data()["titleKor"])
                     print(item.data()["score"])
+                    print(item.data()["weather"])
+                    print(item.data()["flight"])
+                    print(item.data()["exchange"])
                 }
 //                print(querySnapshot!.documents[0].data()["titleKor"])
                 let models = querySnapshot!.documents.map{

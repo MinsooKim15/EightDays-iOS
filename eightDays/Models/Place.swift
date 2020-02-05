@@ -20,6 +20,7 @@ struct Place {
     var weather : Weather?
     var hotel : Hotel?
     var flight : Flight?
+    var cellCount : Int // 노출해야 하는 Cell의 개수 = 데이터의 개수를 세는 Counter입니다.
     
     var hasOpDescription = false
     // 요 아래의 dictionary의 정체를 발견하는 것이 첫번째 목표임 -> 필요 없는 듯
@@ -37,6 +38,7 @@ struct Place {
 //        ]
 //    }
     //TODO : document -> init 이슈가 있다면 여기부터 고쳐보자
+    var listOfUsefulData : [Any]?
     
 }
 
@@ -56,20 +58,37 @@ extension Place {
         let description = dictionary["desctiption"] as? String
         let imgUrl =  dictionary["img_url"] as? String
         var weather : Weather?
+        var cellCount : Int = 0
+        var listOfUsefulData : [Any]?
         if let weatherDictionary = dictionary["weather"] as? [String:Any]{
             weather = Weather(dictionary : weatherDictionary)
+            if let realWeather = weather as? Weather{
+                //Weather Init 실패도 있음
+                cellCount += 1
+                listOfUsefulData?.append(weather)
+            }
         }else{
             weather = nil
         }
         var hotel : Hotel?
         if let hotelDictionary = dictionary["hotel"] as? [String:Any]{
             hotel = Hotel(dictionary : hotelDictionary)
+            if let realHotel = hotel as? Hotel{
+                //Weather Init 실패도 있음
+                cellCount += 1
+                listOfUsefulData?.append(hotel)
+            }
         }else{
             hotel = nil
         }
         var flight : Flight?
         if let flightDictionary = dictionary["flight"] as? [String:Any]{
             flight = Flight(dictionary : flightDictionary)
+            if let realFlight = flight as? Flight{
+                //Flight Init 실패도 있음
+                cellCount += 1
+                listOfUsefulData?.append(flight)
+            }
         }else{
             flight = nil
         }
@@ -88,7 +107,9 @@ extension Place {
                       score : score,
                       weather : weather,
                       hotel : hotel,
-                      flight : flight
+                      flight : flight,
+                      cellCount : cellCount,
+                      listOfUsefulData : listOfUsefulData
         )
         }
     
