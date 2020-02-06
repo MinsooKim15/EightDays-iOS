@@ -202,22 +202,21 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     func getPlaceExchangeTableViewCell(indexPath: IndexPath) ->  PlaceExchangeTableViewCell{
         let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeExchangeTableViewCell", for: indexPath) as! PlaceExchangeTableViewCell
         print("printExchangeViewCell 호출")
-        // TODO : populate 구현 후 해제
-//        if let exchange_ = self.place?.exchange{
+        //TODO : populate 구현 후 해제
+        print(self.place?.exchange)
+        if let exchange_ = self.place?.exchange {
+            print("일단 Exchange 데이터는 잘 들어있음")
 //            cell.populate(exchange:exchange_)
-//        }
-        if let exchange_  = self.temp_exchange{
-            cell.populate(exchange: exchange_)
+            cell.exchange = exchange_
+//            self.contentTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
         }
+//        if let exchange_  = self.temp_exchange{
+//            cell.populate(exchange: exchange_)
+//        }
         return cell
     }
     func getPlaceFlightTableViewCell(indexPath: IndexPath) ->  PlaceFlightTableViewCell{
             let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeFlightTableViewCell", for: indexPath) as! PlaceFlightTableViewCell
-            print("printExchangeViewCell 호출")
-            // TODO : populate 구현 후 해제
-    //        if let exchange_ = self.place?.exchange{
-    //            cell.populate(exchange:exchange_)
-    //        }
         print("placeFlightTableViewCell실행")
         print(self.place?.flight)
         if let flight  = self.place?.flight{

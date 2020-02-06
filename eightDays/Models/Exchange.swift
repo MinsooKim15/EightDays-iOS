@@ -24,7 +24,7 @@ struct Exchange{
 //            "description" : description,
 //            "exchangeRates" : exchangeRates,
 //            "todayRate" : todayRate,
-//            "weekAgoRate" : weekAgoRate,
+//    ㄴ        "weekAgoRate" : weekAgoRate,
 //            "monthAgoRate" : monthAgoRate
 //        ]
 //    }
@@ -35,16 +35,21 @@ extension Exchange{
         guard let title =  dictionary["rateTitle"] as? String,
             let description =  dictionary["rateDescription"] as? String,
 //            let exchangeRates =  dictionary["exchangeRates"] as? [Int],
-            let todayRate =  dictionary["todayRate"] as? Int,
-            let weekAgoRate =  dictionary["weekAgoRate"] as? Int,
-            let monthAgoRate =  dictionary["monthAgoRate"] as? Int
+            let todayRate =  dictionary["todayRate"] as? Double,
+            let weekAgoRate =  dictionary["weekAgoRate"] as? Double,
+            let monthAgoRate =  dictionary["monthAgoRate"] as? Double
             else {print("Exchange 유입은 되었는데, Init 실패")
                 return nil}
+        print("일단 여기까지는 옴")
+//        print(Int("일단 여기까지도 잘 옴"))
+        print(Int(weekAgoRate))
+        print(Int(todayRate))
+        print(Int(monthAgoRate))
         self.init(title : title,
                   description : description,
-                  todayRate : todayRate,
-                  weekAgoRate : weekAgoRate,
-                  monthAgoRate : monthAgoRate
+                  todayRate : Int(todayRate),
+                  weekAgoRate : Int(weekAgoRate),
+                  monthAgoRate : Int(monthAgoRate)
         )
     }
 }

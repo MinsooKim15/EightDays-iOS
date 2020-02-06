@@ -61,6 +61,18 @@ class PlaceExchangeTableViewCell: UITableViewCell {
     var style = CellStyleConfig()
     var mainViewOrigin = CGPoint(x: 0, y: 0)
     
+    
+    var exchange : Exchange? {
+    didSet {
+        self.placeTitle.attributedText = NSAttributedString(string:String(exchange?.title ?? ""))
+        self.placeDescription.text = exchange?.description
+        //TODO : 직접 너무 많은 설정을 해야해서, 설정이 흩어져 있는 것이 신경쓰입니다. 고치자
+        self.todayExchangeValue.attributedText = NSAttributedString(string: String(exchange?.todayRate ?? 0) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.weekExchangeValue.attributedText = NSAttributedString(string: String(exchange?.weekAgoRate ?? 0) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+        self.monthExchangeValue.attributedText = NSAttributedString(string: String(exchange?.monthAgoRate ?? 0) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+    }
+    }
+    
     func makeValueLabel(style:CellStyleConfig) -> UILabel{
         let label = UILabel()
         label.textAlignment = .center
@@ -89,7 +101,7 @@ class PlaceExchangeTableViewCell: UITableViewCell {
     }()
     lazy private var placeDescription: UILabel = {
         let lbl = UILabel()
-        lbl.text = "하와이 호텔은 연평균 1박에 400만원으로 비싼 편이에요.2달 뒤에는 평소보다 조금 더 비싸구요.매일 조금씩 오르고 있어요."
+//        lbl.text = "하와이 호텔은 연평균 1박에 400만원으로 비싼 편이에요.2달 뒤에는 평소보다 조금 더 비싸구요.매일 조금씩 오르고 있어요."
         lbl.textAlignment = .left
         lbl.numberOfLines = 3
         lbl.textColor = style.fontColorDescription
@@ -170,15 +182,16 @@ class PlaceExchangeTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented" )
     }
-    func populate(exchange:Exchange){
-        self.placeTitle.text = exchange.title
-        self.placeDescription.text = exchange.description
-        //TODO : 직접 너무 많은 설정을 해야해서, 설정이 흩어져 있는 것이 신경쓰입니다. 고치자
-        self.todayExchangeValue.attributedText = NSAttributedString(string: String(exchange.todayRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.weekExchangeValue.attributedText = NSAttributedString(string: String(exchange.weekAgoRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.monthExchangeValue.attributedText = NSAttributedString(string: String(exchange.monthAgoRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        
-    }
+//    func populate(exchange:Exchange){
+//        self.placeTitle.text = exchange.title
+//        self.placeDescription.text = exchange.description
+//        //TODO : 직접 너무 많은 설정을 해야해서, 설정이 흩어져 있는 것이 신경쓰입니다. 고치자
+//        self.todayExchangeValue.attributedText = NSAttributedString(string: String(exchange.todayRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+//        self.weekExchangeValue.attributedText = NSAttributedString(string: String(exchange.weekAgoRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+//        self.monthExchangeValue.attributedText = NSAttributedString(string: String(exchange.monthAgoRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+//        self.layoutIfNeeded()
+//        
+//    }
 }
 
 

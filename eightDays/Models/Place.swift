@@ -20,7 +20,9 @@ struct Place {
     var weather : Weather?
     var hotel : Hotel?
     var flight : Flight?
+    var exchange : Exchange?
     var cellCount : Int // 노출해야 하는 Cell의 개수 = 데이터의 개수를 세는 Counter입니다.
+    
     
     var hasOpDescription = false
     // 요 아래의 dictionary의 정체를 발견하는 것이 첫번째 목표임 -> 필요 없는 듯
@@ -92,6 +94,15 @@ extension Place {
         }else{
             flight = nil
         }
+        var exchange : Exchange?
+        if let exchangeDictionary = dictionary["exchange"] as? [String:Any]{
+            exchange = Exchange(dictionary: exchangeDictionary)
+            if let realExchange = exchange as? Exchange{
+                cellCount += 1
+                listOfUsefulData.append(exchange)
+            }
+        }
+        
 
 //            self.title_kor = title_kor
 //            self.title_eng = title_eng
@@ -108,6 +119,7 @@ extension Place {
                       weather : weather,
                       hotel : hotel,
                       flight : flight,
+                      exchange : exchange,
                       cellCount : cellCount,
                       listOfUsefulData : listOfUsefulData
         )
