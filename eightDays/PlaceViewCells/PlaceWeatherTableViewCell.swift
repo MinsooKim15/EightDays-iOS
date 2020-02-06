@@ -28,13 +28,18 @@ class PlaceWeatherTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func populate(weather:Weather){
-        placeTitle.text = weather.title
-        placeDescription.text = weather.description
-        raindaysValue.text = String(Int(weather.raindays)) + "일"
-        averageTempValue.text = String(Int(weather.averageTemp)) + "°C"
-        averageSeoulTempValue.text = String(Int(weather.seoulTemp)) + "°C"
+    var weather : Weather?{
+        didSet{
+            placeTitle.text = weather?.title
+            placeDescription.text = weather?.description
+            raindaysValue.text = String(Int(weather?.raindays ?? 0)) + "일"
+            averageTempValue.text = String(Int(weather?.averageTemp ?? 0)) + "°C"
+            averageSeoulTempValue.text = String(Int(weather?.seoulTemp ?? 0)) + "°C"
+        }
     }
+//    func populate(weather:Weather){
+//
+//    }
 
     @IBOutlet weak var placeTitle: UILabel!
     @IBOutlet weak var placeDescription: UILabel!

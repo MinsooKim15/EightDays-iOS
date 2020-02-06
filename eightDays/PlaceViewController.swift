@@ -193,7 +193,8 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     func getPlaceWeatherTableViewCell(indexPath:IndexPath)-> PlaceWeatherTableViewCell{
         let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeWeatherTableViewCell", for: indexPath) as! PlaceWeatherTableViewCell
         if let weather_ = self.place?.weather{
-            cell.populate(weather:weather_)
+//            cell.populate(weather:weather_)
+            cell.weather = weather_
         }
         return cell
     }
@@ -219,8 +220,9 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
             let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeFlightTableViewCell", for: indexPath) as! PlaceFlightTableViewCell
         print("placeFlightTableViewCell실행")
         print(self.place?.flight)
-        if let flight  = self.place?.flight{
-                cell.populate(flight: flight)
+        if let flight_  = self.place?.flight{
+//                cell.populate(flight: flight)
+            cell.flight = flight_
         }
         return cell
     }
