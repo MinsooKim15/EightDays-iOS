@@ -14,27 +14,27 @@ import Firebase
 struct Exchange{
     var title : String
     var description : String
-    var exchangeRates : [Int]
+    var exchangeRates : [Int]?
     var todayRate : Int
     var weekAgoRate : Int
     var monthAgoRate : Int
-    var dictionary: [String: Any]{
-        return [
-            "title" : title,
-            "description" : description,
-            "exchangeRates" : exchangeRates,
-            "todayRate" : todayRate,
-            "weekAgoRate" : weekAgoRate,
-            "monthAgoRate" : monthAgoRate
-        ]
-    }
+//    var dictionary: [String: Any]{
+//        return [
+//            "title" : title,
+//            "description" : description,
+//            "exchangeRates" : exchangeRates,
+//            "todayRate" : todayRate,
+//            "weekAgoRate" : weekAgoRate,
+//            "monthAgoRate" : monthAgoRate
+//        ]
+//    }
 }
 
 extension Exchange{
     init?(dictionary: [String:Any]){
-        guard let title =  dictionary["title"] as? String,
-            let description =  dictionary["description"] as? String,
-            let exchangeRates =  dictionary["exchangeRates"] as? [Int],
+        guard let title =  dictionary["rateTitle"] as? String,
+            let description =  dictionary["rateDescription"] as? String,
+//            let exchangeRates =  dictionary["exchangeRates"] as? [Int],
             let todayRate =  dictionary["todayRate"] as? Int,
             let weekAgoRate =  dictionary["weekAgoRate"] as? Int,
             let monthAgoRate =  dictionary["monthAgoRate"] as? Int
@@ -42,7 +42,6 @@ extension Exchange{
                 return nil}
         self.init(title : title,
                   description : description,
-                  exchangeRates : exchangeRates,
                   todayRate : todayRate,
                   weekAgoRate : weekAgoRate,
                   monthAgoRate : monthAgoRate

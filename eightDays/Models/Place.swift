@@ -59,13 +59,13 @@ extension Place {
         let imgUrl =  dictionary["img_url"] as? String
         var weather : Weather?
         var cellCount : Int = 0
-        var listOfUsefulData : [Any]?
+        var listOfUsefulData : [Any] = []
         if let weatherDictionary = dictionary["weather"] as? [String:Any]{
             weather = Weather(dictionary : weatherDictionary)
             if let realWeather = weather as? Weather{
                 //Weather Init 실패도 있음
                 cellCount += 1
-                listOfUsefulData?.append(weather)
+                listOfUsefulData.append(weather)
             }
         }else{
             weather = nil
@@ -76,7 +76,7 @@ extension Place {
             if let realHotel = hotel as? Hotel{
                 //Weather Init 실패도 있음
                 cellCount += 1
-                listOfUsefulData?.append(hotel)
+                listOfUsefulData.append(hotel)
             }
         }else{
             hotel = nil
@@ -87,7 +87,7 @@ extension Place {
             if let realFlight = flight as? Flight{
                 //Flight Init 실패도 있음
                 cellCount += 1
-                listOfUsefulData?.append(flight)
+                listOfUsefulData.append(flight)
             }
         }else{
             flight = nil

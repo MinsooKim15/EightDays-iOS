@@ -218,6 +218,8 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     //        if let exchange_ = self.place?.exchange{
     //            cell.populate(exchange:exchange_)
     //        }
+        print("placeFlightTableViewCell실행")
+        print(self.place?.flight)
         if let flight  = self.place?.flight{
                 cell.populate(flight: flight)
         }

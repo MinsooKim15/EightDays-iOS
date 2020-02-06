@@ -133,7 +133,7 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
         print("getDocument")
         let placeRef = db.collection("place")
-        placeRef.order(by: "titleKor", descending: false).limit(to: 1).getDocuments(){(querySnapshot, err) in
+        placeRef.order(by: "score", descending: false).limit(to: 1).getDocuments(){(querySnapshot, err) in
 //        placeRef.
             //            print("==================")
             //            print(querySnapshot!.documents[0].data())

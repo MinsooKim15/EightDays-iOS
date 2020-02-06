@@ -53,14 +53,14 @@ class PlaceFlightTableViewCell: UITableViewCell {
         return lbl
     }()
     
-    lazy private var monthAgoAverageValue: UILabel = {
-        return makeValueLabel(style: style)
-    }()
-    lazy private var monthAgoAverageDesc: UILabel = {
-        let lbl = makeDescLabel(style: style)
-        lbl.text = "한 달 전 \n 평균 왕복 비행기 값"
-        return lbl
-    }()
+//    lazy private var monthAgoAverageValue: UILabel = {
+//        return makeValueLabel(style: style)
+//    }()
+//    lazy private var monthAgoAverageDesc: UILabel = {
+//        let lbl = makeDescLabel(style: style)
+//        lbl.text = "한 달 전 \n 평균 왕복 비행기 값"
+//        return lbl
+//    }()
     lazy private var monthAgoMinimumValue: UILabel = {
         return makeValueLabel(style: style)
     }()
@@ -102,27 +102,27 @@ class PlaceFlightTableViewCell: UITableViewCell {
         self.addSubview(todayAverageDesc)
         self.addSubview(todayMinimumValue)
         self.addSubview(todayMinimumDesc)
-        self.addSubview(monthAgoAverageValue)
-        self.addSubview(monthAgoAverageDesc)
-        self.addSubview(monthAgoMinimumValue)
-        self.addSubview(monthAgoMinimumDesc)
+//        self.addSubview(monthAgoAverageValue)
+//        self.addSubview(monthAgoAverageDesc)
+//        self.addSubview(monthAgoMinimumValue)
+//        self.addSubview(monthAgoMinimumDesc)
         
         //테스트 중 입니다.(타이틀만 모양잡기)
         placeTitle.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 18, paddingBottom: 0, paddingRight: 101, width: 295, height: 29, enableInsets: false)
         placeDescription.anchor(top: placeTitle.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 3, paddingLeft: 18, paddingBottom: 0, paddingRight: 16, width: 380, height: 57, enableInsets: false)
-        todayAverageValue.anchor(top: placeDescription.bottomAnchor, left: leftAnchor, bottom: nil, right: monthAgoAverageValue.leftAnchor, paddingTop: 12, paddingLeft: 47, paddingBottom: 0, paddingRight: 72, width: 120, height: 50, enableInsets: false)
-        monthAgoAverageValue.anchor(top: placeDescription.bottomAnchor, left: todayAverageValue.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 72, paddingBottom: 0, paddingRight: 40, width: 120, height: 50, enableInsets: false)
+        todayAverageValue.anchor(top: placeDescription.bottomAnchor, left: leftAnchor, bottom: nil, right: todayMinimumValue.leftAnchor, paddingTop: 12, paddingLeft: 47, paddingBottom: 0, paddingRight: 72, width: 120, height: 50, enableInsets: false)
+//        monthAgoAverageValue.anchor(top: placeDescription.bottomAnchor, left: todayAverageValue.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 72, paddingBottom: 0, paddingRight: 40, width: 120, height: 50, enableInsets: false)
         // averageDesc와 minimumDesc/Value는 averageValue의 중앙에 맞춘다.
         todayAverageDesc.anchor(top: todayAverageValue.bottomAnchor, bottom: nil, centerX: todayAverageValue.centerXAnchor, paddingTop: 8, paddingBottom: 0, width: 103, height: 30, enableInsets: false)
-        monthAgoAverageDesc.anchor(top: monthAgoAverageValue.bottomAnchor, bottom: nil, centerX: monthAgoAverageValue.centerXAnchor, paddingTop: 8, paddingBottom: 0, width: 103, height: 30, enableInsets: false)
+//        monthAgoAverageDesc.anchor(top: monthAgoAverageValue.bottomAnchor, bottom: nil, centerX: monthAgoAverageValue.centerXAnchor, paddingTop: 8, paddingBottom: 0, width: 103, height: 30, enableInsets: false)
 
         //minimumValue는 centerX 정렬은 같은데, top padding 값을 늘린다.
-        todayMinimumValue.anchor(top: todayAverageDesc.bottomAnchor, bottom: nil, centerX: todayAverageValue.centerXAnchor, paddingTop: 20, paddingBottom: 0, width: 120, height: 50, enableInsets: false)
-        monthAgoMinimumValue.anchor(top: monthAgoAverageDesc.bottomAnchor, bottom: nil, centerX: monthAgoAverageValue.centerXAnchor, paddingTop: 20, paddingBottom: 0, width: 120, height: 50, enableInsets: false)
+        todayMinimumValue.anchor(top: placeDescription.bottomAnchor, left:todayAverageValue.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 47, paddingBottom: 0, paddingRight: 40, width: 120, height: 50, enableInsets: false)
+//        monthAgoMinimumValue.anchor(top: monthAgoAverageDesc.bottomAnchor, bottom: nil, centerX: monthAgoAverageValue.centerXAnchor, paddingTop: 20, paddingBottom: 0, width: 120, height: 50, enableInsets: false)
 
         //minimumDesc는 averageDesc와 같음.
-        todayMinimumDesc.anchor(top: todayMinimumValue.bottomAnchor, bottom: nil, centerX: todayAverageValue.centerXAnchor, paddingTop: 8, paddingBottom: 0, width: 103, height: 30, enableInsets: false)
-        monthAgoMinimumDesc.anchor(top: monthAgoMinimumValue.bottomAnchor, bottom: nil, centerX: monthAgoAverageValue.centerXAnchor, paddingTop: 8, paddingBottom: 0, width: 103, height: 30, enableInsets: false)
+        todayMinimumDesc.anchor(top: todayMinimumValue.bottomAnchor, bottom: nil, centerX: todayMinimumValue.centerXAnchor, paddingTop: 8, paddingBottom: 0, width: 103, height: 30, enableInsets: false)
+//        monthAgoMinimumDesc.anchor(top: monthAgoMinimumValue.bottomAnchor, bottom: nil, centerX: monthAgoAverageValue.centerXAnchor, paddingTop: 8, paddingBottom: 0, width: 103, height: 30, enableInsets: false)
 
         
         self.layoutIfNeeded()
@@ -137,8 +137,8 @@ class PlaceFlightTableViewCell: UITableViewCell {
         //TODO : 직접 너무 많은 설정을 해야해서, 설정이 흩어져 있는 것이 신경쓰입니다. 고치자
         self.todayAverageValue.attributedText = NSAttributedString(string:intToString(flight.todayAverage), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
         self.todayMinimumValue.attributedText = NSAttributedString(string:intToString(flight.todayMinimum), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.monthAgoAverageValue.attributedText = NSAttributedString(string:intToString(flight.monthAgoAverage), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-        self.monthAgoMinimumValue.attributedText = NSAttributedString(string:intToString(flight.monthAgoMinimum), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+//        self.monthAgoAverageValue.attributedText = NSAttributedString(string:intToString(flight.monthAgoAverage), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
+//        self.monthAgoMinimumValue.attributedText = NSAttributedString(string:intToString(flight.monthAgoMinimum), attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
     }
     func intToString(_ int:Int)->String{
         let manWon = int / 10000
