@@ -10,7 +10,7 @@ import UIKit
 
 class PlaceFlightTableViewCell: UITableViewCell {
 
-    // 처음 코드만으로 완성한 Cell이에요 ㅜㅜ 감동
+   // 처음 코드만으로 완성한 Cell이에요 ㅜㅜ 감동
     //MARK : 이후의 코드들이 쓸 설정 값입니다.
     var style = CellStyleConfig()
     var mainViewOrigin = CGPoint(x: 0, y: 0)

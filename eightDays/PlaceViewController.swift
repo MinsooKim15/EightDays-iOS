@@ -18,7 +18,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     //임시용 변수입니다. Firebase에 제대로 데이터 들어가면 삭제 필요함.
     var temp_exchange : Exchange?
-   
+    
     func makeTempRate()-> [Int]{
         //임시로 3달 기간 동안의 환율을 보여주는 가짜 데이터 리스트를 만들었습니다.
         // 매일 10원씩 오릅니다.(미쳤지요)
@@ -34,7 +34,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         return result
     }
     //컴파일을 위해 일단 죄다 주석했습니다.
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //임시용 변수입니다. Firebase에 제대로 데이터 들어가면 삭제 필요함.
@@ -65,16 +65,16 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         print(place?.listOfUsefulData)
         // Do any additional setup after loading the view.
     }
-//
-//    //MARK : TableView 관련 코드
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//           return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = self.table
-//           return cell
-//    }
+    //
+    //    //MARK : TableView 관련 코드
+    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //           return 1
+    //    }
+    //
+    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //        let cell = self.table
+    //           return cell
+    //    }
     
     var closeButton : CloseButton = {
         var button = CloseButton()
@@ -106,32 +106,32 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     func getMainPlace(byId title : String){
-            //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
-            print("getDocument")
+        //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
+        print("getDocument")
         let placeRef = db.collection("place")
-//            placeRef.order(by: "score", descending: true).limit(to: 1)
+        //            placeRef.order(by: "score", descending: true).limit(to: 1)
         placeRef.whereField("title_eng", isEqualTo: title)
-            placeRef.getDocuments(){(querySnapshot, err) in
-
-                if let err = err{
-                    print("Error getting documents: \(err)")
-                }else{
-                    let models = querySnapshot!.documents.map{
-                        (document) -> Place in if let model = Place(dictionary: document.data()){
-                            return model
-                        } else {
-                            fatalError("Unable to initialize type \(Place.self) with dictionary")
-                        }
+        placeRef.getDocuments(){(querySnapshot, err) in
+            
+            if let err = err{
+                print("Error getting documents: \(err)")
+            }else{
+                let models = querySnapshot!.documents.map{
+                    (document) -> Place in if let model = Place(dictionary: document.data()){
+                        return model
+                    } else {
+                        fatalError("Unable to initialize type \(Place.self) with dictionary")
                     }
-                    print(models)
-                    self.places = models
                 }
-                print("done")
-//                self.tableView.reloadData()
+                print(models)
+                self.places = models
             }
+            print("done")
+            //                self.tableView.reloadData()
         }
+    }
     func getMainPlace(byTitle: String){
-//        print("")
+        //        print("")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,35 +140,30 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (place?.hasOpDescription ?? false){
-            print("운영 값이 있는 경우는 Model부터 새로 짜야 해ㅜ")
+        
+        if (indexPath.row) == 0{
             let cell = getPlaceMainTableViewCell(indexPath: indexPath)
             return cell
         }else{
-            if (indexPath.row) == 0{
-                let cell = getPlaceMainTableViewCell(indexPath: indexPath)
+            switch (place?.listOfUsefulData?[indexPath.row - 1]){
+            case is(Flight):
+                let cell = getPlaceFlightTableViewCell(indexPath: indexPath)
                 return cell
-            }else{
-                switch (place?.listOfUsefulData?[indexPath.row - 1]){
-                    case is(Flight):
-                    let cell = getPlaceFlightTableViewCell(indexPath: indexPath)
-                    return cell
-                case is(Exchange):
-                    let cell = getPlaceExchangeTableViewCell(indexPath: indexPath)
-                    return cell
-                case is(Weather):
-                    let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
-                    return cell
-                default:
-                    let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
-                    return cell
+            case is(Exchange):
+                let cell = getPlaceExchangeTableViewCell(indexPath: indexPath)
+                return cell
+            case is(Weather):
+                let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
+                return cell
+            default:
+                let cell = getPlaceWeatherTableViewCell(indexPath: indexPath)
+                return cell
             }
             print("!!!!!!!!!!")
             print(indexPath.row)
             print(place?.listOfUsefulData?[indexPath.row])
-
+            
         }
-    }
     }
     func getPlaceMainTableViewCell(indexPath: IndexPath)->PlaceMainTableViewCell{
         //PlaceMainTableViewCell을 만들어 주는 코드입니다.
@@ -179,7 +174,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         // 여기까지가 데이터를 입히는 코드
         // 이 밑에는 그라데이션 넣는 코드
         let gradient: CAGradientLayer = CAGradientLayer()
-
+        
         gradient.colors = [UIColor.brightCyan.cgColor, UIColor.darkSkyBlue.cgColor]
         gradient.locations = [0.0 , 0.5]
         gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
@@ -193,7 +188,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     func getPlaceWeatherTableViewCell(indexPath:IndexPath)-> PlaceWeatherTableViewCell{
         let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeWeatherTableViewCell", for: indexPath) as! PlaceWeatherTableViewCell
         if let weather_ = self.place?.weather{
-//            cell.populate(weather:weather_)
+            //            cell.populate(weather:weather_)
             cell.weather = weather_
         }
         return cell
@@ -207,62 +202,80 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         print(self.place?.exchange)
         if let exchange_ = self.place?.exchange {
             print("일단 Exchange 데이터는 잘 들어있음")
-//            cell.populate(exchange:exchange_)
+            //            cell.populate(exchange:exchange_)
             cell.exchange = exchange_
-//            self.contentTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
+            //            self.contentTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
         }
-//        if let exchange_  = self.temp_exchange{
-//            cell.populate(exchange: exchange_)
-//        }
+        //        if let exchange_  = self.temp_exchange{
+        //            cell.populate(exchange: exchange_)
+        //        }
         return cell
     }
     func getPlaceFlightTableViewCell(indexPath: IndexPath) ->  PlaceFlightTableViewCell{
-            let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeFlightTableViewCell", for: indexPath) as! PlaceFlightTableViewCell
+        let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeFlightTableViewCell", for: indexPath) as! PlaceFlightTableViewCell
         print("placeFlightTableViewCell실행")
         print(self.place?.flight)
         if let flight_  = self.place?.flight{
-//                cell.populate(flight: flight)
+            //                cell.populate(flight: flight)
             cell.flight = flight_
         }
         return cell
     }
     func getPlaceHotelTableViewCell(indexPath: IndexPath) ->  PlaceHotelTableViewCell{
-            let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeHotelTableViewCell", for: indexPath) as! PlaceHotelTableViewCell
-            print("printHotelViewCell 호출")
-            // TODO : populate 구현 후 해제
-    //        if let exchange_ = self.place?.exchange{
-    //            cell.populate(exchange:exchange_)
-    //        }
+        let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeHotelTableViewCell", for: indexPath) as! PlaceHotelTableViewCell
+        print("printHotelViewCell 호출")
+        // TODO : populate 구현 후 해제
+        //        if let exchange_ = self.place?.exchange{
+        //            cell.populate(exchange:exchange_)
+        //        }
         if let hotel  = self.place?.hotel{
-                cell.populate(hotel: hotel)
+            cell.populate(hotel: hotel)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row{
-        case 0:
+        if (indexPath.row) == 0{
             return CGFloat(461.3)
-        case 1:
-            return CGFloat(220.0)
-        case 2:
-            return CGFloat(220.0)
-        case 3:
-            return CGFloat(330.0)
-        case 4:
-            return CGFloat(240.0)
-        default:
-            return CGFloat(220.0)
+        }else{
+            switch (place?.listOfUsefulData?[indexPath.row - 1]){
+            case is(Flight):
+                return CGFloat(220.0)
+            case is(Exchange):
+                return CGFloat(220.0)
+            case is(Weather):
+                return CGFloat(220.0)
+            default:
+                return CGFloat(220.0)
+            }
+            print("!!!!!!!!!!")
+            print(indexPath.row)
+            print(place?.listOfUsefulData?[indexPath.row])
+            
         }
-   
-    }
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row == 0{
-//            return CGFloat(461.3)
-//        }else{
-//            return CGFloat(349.7) // 여긴 수정 필요함
+//        switch indexPath.row{
+//        case 0:
+//
+//        case 1:
+//            return
+//        case 2:
+//            return CGFloat(220.0)
+//        case 3:
+//            return CGFloat(330.0)
+//        case 4:
+//            return CGFloat(240.0)
+//        default:
+//            return CGFloat(220.0)
 //        }
-//    }
+        
+    }
+    //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        if indexPath.row == 0{
+    //            return CGFloat(461.3)
+    //        }else{
+    //            return CGFloat(349.7) // 여긴 수정 필요함
+    //        }
+    //    }
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -273,9 +286,9 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.isTranslucent = false
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView){
-//        //First Visible Item
-//        print("처음은")
-//        print(self.contentTableView.indexPathsForVisibleRows?.first)
+        //        //First Visible Item
+        //        print("처음은")
+        //        print(self.contentTableView.indexPathsForVisibleRows?.first)
         if self.contentTableView.indexPathsForVisibleRows?.first != Optional([0,0]) && !self.closeButton.isBlack {
             print("어둡게")
             closeButton.isBlack = true
@@ -283,24 +296,24 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
             print("밝게")
             closeButton.isBlack = false
         }
-//        //Last visible item
-//        print("마지막은")
-//        print(self.contentTableView.indexPathsForVisibleRows?.last)
+        //        //Last visible item
+        //        print("마지막은")
+        //        print(self.contentTableView.indexPathsForVisibleRows?.last)
     }
     
     
     @IBOutlet weak var contentTableView: UITableView!
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 class CloseButton : UIButton{
@@ -309,17 +322,17 @@ class CloseButton : UIButton{
         didSet{
             print("바뀜!!")
             setNeedsDisplay()
-//            if self.isBlack{
-//                self.backgroundColor = .gunmetal
-//                self.line
-//            }else{
-//                self.backgroundColor = .veryLightPink80
-//            }
+            //            if self.isBlack{
+            //                self.backgroundColor = .gunmetal
+            //                self.line
+            //            }else{
+            //                self.backgroundColor = .veryLightPink80
+            //            }
         }
     }
     
     override func draw(_ rect: CGRect) {
-
+        
         var path = UIBezierPath(ovalIn: rect)
         
         if isBlack {
@@ -337,18 +350,18 @@ class CloseButton : UIButton{
         linePath.move(to: CGPoint(
             x: (bounds.width / 2) - (lineWidth / 2),
             y: (bounds.height / 2) - (lineWidth / 2)))
-
+        
         linePath.addLine(to: CGPoint(
             x: (bounds.width / 2) + (lineWidth / 2),
             y: (bounds.height / 2) + (lineWidth / 2)))
-
+        
         linePath.move(to: CGPoint(
             x: (bounds.width / 2) - (lineWidth / 2),
             y: (bounds.height / 2) + (lineWidth / 2)))
-
+        
         linePath.addLine(to: CGPoint(
-                x: (bounds.width / 2) + (lineWidth / 2),
-                y: (bounds.height / 2) - (lineWidth / 2)))
+            x: (bounds.width / 2) + (lineWidth / 2),
+            y: (bounds.height / 2) - (lineWidth / 2)))
         if isBlack {
             UIColor.lightBlueGreyTwo.setStroke()
         }else{
