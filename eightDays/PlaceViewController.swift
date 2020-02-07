@@ -169,7 +169,8 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         //PlaceMainTableViewCell을 만들어 주는 코드입니다.
         let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeMainTableViewCell", for: indexPath) as! PlaceMainTableViewCell
         if let place_ = self.place {
-            cell.populate(place:place_)
+//            cell.populate(place:place_)
+            cell.place = place_
         }
         // 여기까지가 데이터를 입히는 코드
         // 이 밑에는 그라데이션 넣는 코드

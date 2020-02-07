@@ -54,19 +54,32 @@ class MainTableViewCell: UITableViewCell{
 //        }
     }
     
+    lazy private var scoreLabel: UILabel! = {
+        let lbl = UILabel()
+        lbl.textAlignment = .center
+        lbl.textColor = .white
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: CGFloat(30))
+        return lbl
+    }()
+    
+    lazy private var titleEngLabel: UILabel! = {
+        let lbl = UILabel()
+        lbl.textAlignment = .center
+//        lbl.text = "boracay"
+        lbl.textColor = .white
+        lbl.font = .systemFont(ofSize: CGFloat(30))
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    
     
     func adjustLabelToImage(){
         //TODO : font 변경해야 함.
         //mainViewOrigin은 어차피 constraint 설정 때문에 필요없을 것 같은데.. 일단 두자
-        let mainViewOrigin = cellImageView.frame.origin
-        label = UILabel(frame: CGRect(origin: mainViewOrigin, size: CGSize(width: 100, height: 100)))
-        label.textAlignment = .center
-        label.text = "boracay"
-        label.textColor = .white
-        label.font = .systemFont(ofSize: CGFloat(30))
-        label.translatesAutoresizingMaskIntoConstraints = false
         
-        self.cellImageView.addSubview(label)
+        
+        self.cellImageView.addSubview(titleEngLabel)
 
         
         //TODO : 일단 가운데에 두기는 했는데, 아직 이쁘지 않아 해결하자
@@ -83,43 +96,38 @@ class MainTableViewCell: UITableViewCell{
         
         
         
-        let newLabel = UILabel(frame: CGRect(origin: mainViewOrigin, size: CGSize(width:100, height : 100)))
-        newLabel.textAlignment = .center
-        newLabel.text = "95%"
-        newLabel.textColor = .white
-        newLabel.translatesAutoresizingMaskIntoConstraints = false
-        newLabel.font = .systemFont(ofSize: CGFloat(30))
+        
 //        newLabel.backgroundColor = .black
-        self.cellImageView.addSubview(newLabel)
+        self.cellImageView.addSubview(scoreLabel)
         // 여기까지가 newLabel 정의 구간.
         
         
-        let labelcenterXConstraint = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
-        let newLabelcenterXConstraint = NSLayoutConstraint(item: newLabel, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
+        let titleEngLabelCenterXConstraint = NSLayoutConstraint(item: titleEngLabel, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
+        let scoreLabelCenterXConstraint = NSLayoutConstraint(item: scoreLabel, attribute: .centerX, relatedBy: .equal, toItem: self.cellImageView, attribute: .centerX, multiplier: 1, constant: 0)
         
         
-        let labelcenterYConstraint = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .bottom, multiplier: 0.4, constant: 0)
-        let newLabelcenterYConstraint = NSLayoutConstraint(item: newLabel, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .bottom, multiplier: 0.65, constant: 0)
+        let labelCenterYConstraint = NSLayoutConstraint(item: titleEngLabel, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .bottom, multiplier: 0.4, constant: 0)
+        let scoreLabelcenterYConstraint = NSLayoutConstraint(item: scoreLabel, attribute: .centerY, relatedBy: .equal, toItem: self.cellImageView, attribute: .bottom, multiplier: 0.65, constant: 0)
         
         
-        let labelwidthConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        let newLabelwidthConstraint = NSLayoutConstraint(item: newLabel, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        let labelWidthConstraint = NSLayoutConstraint(item: titleEngLabel, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        let scoreLabelwidthConstraint = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
         
-        let labelheightConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 50)
-        let newLabelheightConstraint = NSLayoutConstraint(item: newLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        let titleEngLabelHeightConstraint = NSLayoutConstraint(item: titleEngLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 50)
+        let scoreLabelHeightConstraint = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
         
 
         self.cellImageView.addConstraints([
-            labelcenterXConstraint,
-            labelcenterYConstraint,
-            labelwidthConstraint,
-            labelheightConstraint
+            titleEngLabelCenterXConstraint,
+            labelCenterYConstraint,
+            labelWidthConstraint,
+            titleEngLabelHeightConstraint
         ])
         self.cellImageView.addConstraints([
-            newLabelcenterXConstraint,
-            newLabelcenterYConstraint,
-            newLabelwidthConstraint,
-            newLabelheightConstraint
+            scoreLabelCenterXConstraint,
+            scoreLabelcenterYConstraint,
+            scoreLabelwidthConstraint,
+            scoreLabelHeightConstraint
         ])
         self.cellImageView.layoutIfNeeded()
         
@@ -177,7 +185,7 @@ class MainTableViewCell: UITableViewCell{
         circleShape.lineWidth = 10.0
         // set start and end values
         circleShape.strokeStart = 0.0
-        circleShape.strokeEnd = CGFloat(CGFloat(self.scoreInt ?? 0)/CGFloat(100))
+        circleShape.strokeEnd = CGFloat(CGFloat(self.place?.score ?? 0)/CGFloat(100))
 
         // add sublayer
         self.cellImageView.layer.addSublayer(circleShape)
@@ -200,7 +208,7 @@ class MainTableViewCell: UITableViewCell{
 //        self.layer.insertSublayer(gradientLayer, at:0)
 //    }
     
-    var label: UILabel!
+
     
     @IBOutlet weak var cellDescription: UILabel!
     @IBOutlet weak var cellImageView: UIImageView!{
@@ -214,25 +222,31 @@ class MainTableViewCell: UITableViewCell{
             setScoreRound()
         }
     }
-    var place : Place?
-    
-    func populate(place : Place){
-        self.scoreInt = place.score
-        self.place = place
-        cellDescription.text = place.description
-        label.text = place.title_eng
-        let placeholderImage = UIImage(named: "boracay")!
-        if let imageUrl  = place.img_url as? String {
+    var place : Place?{
+        didSet{
+//          self.scoreInt = place.score
+            setScoreRound()
+            scoreLabel.text = String(place?.score ?? 0) + "%"
+            cellDescription.text = place?.description
+            titleEngLabel.text = place?.title_eng
+            let placeholderImage = UIImage(named: "boracay")!
+            if let imageUrl  = place?.img_url as? String {
                 let image_ = URL(string: imageUrl)
                 print(image_)
                 print("이미지 불러오기 시작")
                 cellImageView.af_setImage(withURL: image_!, placeholderImage : placeholderImage)
-        }else{
-            cellImageView = UIImageView(image:placeholderImage)
+                }else{
+                cellImageView = UIImageView(image:placeholderImage)
+            }
+                //        self.layoutSubviews()
+                //        cellImageView.downloaded(from: place.img_url)
+
         }
-//        self.layoutSubviews()
-//        cellImageView.downloaded(from: place.img_url)
+        
     }
+    
+    func populate(place : Place){
+            }
    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }

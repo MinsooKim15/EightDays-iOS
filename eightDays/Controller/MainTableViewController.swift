@@ -249,10 +249,12 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
             cell.layer.insertSublayer(gradient, at: 0)
             // 이 위까지요.
             cell.delegate = self
-            
-            
-            let place = places[indexPath.row]
-            cell.populate(place:place)
+            print(indexPath.row)
+            if let place_ = places[0] as? Place{
+                cell.place = place_
+                print(cell.place?.title_kor)
+            }
+//            cell.populate(place:place)
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "curationTableViewCell", for : indexPath) as! CurationTableViewCell
