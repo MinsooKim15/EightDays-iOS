@@ -258,8 +258,9 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "curationTableViewCell", for : indexPath) as! CurationTableViewCell
-            let curation = curations[indexPath.row - 1]
-            cell.populate(curation:curation)
+            let curation_ = curations[indexPath.row - 1]
+            cell.curation = curation_
+//            cell.populate(curation:curation)
             cell.delegate = self
             return cell
         }

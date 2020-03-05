@@ -41,16 +41,22 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
     
     @IBOutlet weak var curationTitle: UILabel!
     var placeList : [SmallPlace]?
+    var curation : Curation?{
+        didSet{
+            self.curationTitle.text = curation?.title
+            self.placeList = curation?.placeList!
+        }
+    }
     
     //TODO : populate 정의합시다.
     func populate(){
         // 테스트를 위한 populate이니, 잠시 유지했다가 삭제
         curationTitle.text = "특별한 여름을 위한 휴양지"
     }
-    func populate(curation:Curation){
-        self.curationTitle.text = curation.title
-        self.placeList = curation.placeList! //밖에서 막을거야 없으면
-    }
+//    func populate(curation:Curation){
+//        self.curationTitle.text = curation.title
+//        self.placeList = curation.placeList! //밖에서 막을거야 없으면
+//    }
     
     
     // Collection View Delegate, Datasource
@@ -67,7 +73,7 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "curationCollectionViewCell", for :indexPath) as! CurationCollectionViewCell
         if let placeList_  = self.placeList{
-            cell.populate(smallPlace: placeList_[indexPath.row])
+            cell.smallPlace = placeList_[indexPath.row]
         }
         //코너 둥글게 만들기
         cell.clipsToBounds = true
