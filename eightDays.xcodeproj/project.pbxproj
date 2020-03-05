@@ -33,6 +33,7 @@
 		028420BF237D97590079D36C /* PlaceWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028420BE237D97590079D36C /* PlaceWeatherTableViewCell.swift */; };
 		028420C1237FE4AF0079D36C /* PlaceExchangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028420C0237FE4AF0079D36C /* PlaceExchangeTableViewCell.swift */; };
 		028420C3237FE88B0079D36C /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028420C2237FE88B0079D36C /* Exchange.swift */; };
+		02BCC171240FC43000FA0BBF /* Curation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BCC170240FC43000FA0BBF /* Curation.swift */; };
 		02F1D95A2365E340003449BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F1D9592365E340003449BE /* GoogleService-Info.plist */; };
 		02F2EE27236EE0B700195B95 /* CurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2EE26236EE0B700195B95 /* CurationTableViewCell.swift */; };
 		02F2EE29236EE34E00195B95 /* CurationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2EE28236EE34E00195B95 /* CurationCollectionViewCell.swift */; };
@@ -68,6 +69,7 @@
 		028420BE237D97590079D36C /* PlaceWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		028420C0237FE4AF0079D36C /* PlaceExchangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceExchangeTableViewCell.swift; sourceTree = "<group>"; };
 		028420C2237FE88B0079D36C /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
+		02BCC170240FC43000FA0BBF /* Curation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curation.swift; sourceTree = "<group>"; };
 		02F1D9592365E340003449BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../dev/deep learning/Lecture5/Week3/Trigger word detection/raw_data/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02F2EE26236EE0B700195B95 /* CurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationTableViewCell.swift; sourceTree = "<group>"; };
 		02F2EE28236EE34E00195B95 /* CurationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				026224622365B05A008DD7E0 /* Hotel.swift */,
 				026224642365B0DE008DD7E0 /* Flight.swift */,
 				028420C2237FE88B0079D36C /* Exchange.swift */,
+				02BCC170240FC43000FA0BBF /* Curation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				022788EC23780E9900B88E0D /* SearchViewController.swift in Sources */,
 				022788F2237830EA00B88E0D /* SettingTableViewCell.swift in Sources */,
 				026224612365AFF1008DD7E0 /* Weather.swift in Sources */,
+				02BCC171240FC43000FA0BBF /* Curation.swift in Sources */,
 				022789032378505B00B88E0D /* PlaceTextOnlyTableViewCell.swift in Sources */,
 				022788FA23784EA000B88E0D /* PlaceViewController.swift in Sources */,
 				026224652365B0DE008DD7E0 /* Flight.swift in Sources */,

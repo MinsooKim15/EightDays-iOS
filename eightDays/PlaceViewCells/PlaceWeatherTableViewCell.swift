@@ -37,10 +37,6 @@ class PlaceWeatherTableViewCell: UITableViewCell {
             averageSeoulTempValue.text = String(Int(weather?.seoulTemp ?? 0)) + "°C"
         }
     }
-//    func populate(weather:Weather){
-//
-//    }
-
     @IBOutlet weak var placeTitle: UILabel!
     @IBOutlet weak var placeDescription: UILabel!
     @IBOutlet weak var raindaysValue: UILabel!

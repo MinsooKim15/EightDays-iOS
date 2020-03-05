@@ -182,16 +182,7 @@ class PlaceExchangeTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented" )
     }
-//    func populate(exchange:Exchange){
-//        self.placeTitle.text = exchange.title
-//        self.placeDescription.text = exchange.description
-//        //TODO : 직접 너무 많은 설정을 해야해서, 설정이 흩어져 있는 것이 신경쓰입니다. 고치자
-//        self.todayExchangeValue.attributedText = NSAttributedString(string: String(exchange.todayRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-//        self.weekExchangeValue.attributedText = NSAttributedString(string: String(exchange.weekAgoRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-//        self.monthExchangeValue.attributedText = NSAttributedString(string: String(exchange.monthAgoRate) + "원", attributes: [.font:UIFont.boldSystemFont(ofSize: style.fontSizeValue)])
-//        self.layoutIfNeeded()
-//        
-//    }
+
 }
 
 

@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionViewDataSource {
     var delegate : MyCustomCellDelegator?
 
