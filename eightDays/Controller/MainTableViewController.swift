@@ -28,7 +28,7 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        print("viewdidLoad")
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -259,9 +259,12 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "curationTableViewCell", for : indexPath) as! CurationTableViewCell
             let curation_ = curations[indexPath.row - 1]
+            
             cell.curation = curation_
+
 //            cell.populate(curation:curation)
             cell.delegate = self
+            cell.curationCollectionView.reloadData()
             return cell
         }
         

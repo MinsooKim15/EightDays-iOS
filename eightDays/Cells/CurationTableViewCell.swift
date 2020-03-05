@@ -26,9 +26,11 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
 //        flowLayout.minimumInteritemSpacing = 200.0
         self.curationCollectionView.collectionViewLayout = flowLayout
         // Initialization code
-        
-        
+ 
     }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        <#code#>
+//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
            super.setSelected(selected, animated: animated)
@@ -44,7 +46,8 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
     var curation : Curation?{
         didSet{
             self.curationTitle.text = curation?.title
-            self.placeList = curation?.placeList!
+            
+//            self.placeList = curation?.placeList!
         }
     }
     
@@ -58,10 +61,10 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
 //        self.placeList = curation.placeList! //밖에서 막을거야 없으면
 //    }
     
-    
+
     // Collection View Delegate, Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.placeList?.count ?? 0
+        return self.curation?.placeList?.count ?? 0
     }
     
     // TODO : 개수가 너무 적으면 좌우로 제대로 움직이지 않는 현상
@@ -72,8 +75,11 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
     //TODO : curation cell간 간격이 너무 좁아여.. 이거 수정해야 함.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "curationCollectionViewCell", for :indexPath) as! CurationCollectionViewCell
-        if let placeList_  = self.placeList{
+        if let placeList_  = self.curation?.placeList {
+            
             cell.smallPlace = placeList_[indexPath.row]
+        }else{
+            print("placeList_ 설정이 안 됨.")
         }
         //코너 둥글게 만들기
         cell.clipsToBounds = true
