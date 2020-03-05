@@ -23,13 +23,14 @@ class MainTableViewCell: UITableViewCell{
     //190CGRect(x :, size: CGSize(width : CGFloat(100), height: CGFloat(100)))
     override func awakeFromNib() {
         super.awakeFromNib()
-//         setGradientBackground()
+        print("awakeFromNib 실행")
+        // setGradientBackground()
         // 줄 바꿈은 단어 단위로..?( 더 해보고 변경 필요하면 바꾸자)
         self.cellDescription.lineBreakMode = .byWordWrapping
         setImageView()
-//        let colorTop =  UIColor.brightCyan
-//        let colorBottom = UIColor.darkSkyBlue
-//
+        // let colorTop =  UIColor.brightCyan
+        // let colorBottom = UIColor.darkSkyBlue
+        //
 //        let gradientLayer = CAGradientLayer()
 //        gradientLayer.colors = [colorTop, colorBottom]
 //        gradientLayer.locations = [0.0, 1.0]
@@ -42,6 +43,7 @@ class MainTableViewCell: UITableViewCell{
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         cellImageView.isUserInteractionEnabled = true
         cellImageView.addGestureRecognizer(tap)
+        layoutIfNeeded()
     }
     
     @objc
@@ -172,6 +174,10 @@ class MainTableViewCell: UITableViewCell{
         // round view
         
         // bezier path
+        print("여기는 Cell")
+        print(self)
+        print("여기는 cellImageView")
+        print(self.cellImageView)
         let circlePath = UIBezierPath(arcCenter: CGPoint (x: self.cellImageView.frame.size.width / 2, y: self.cellImageView.frame.size.height / 2),
                                       radius: self.cellImageView.frame.size.width / 2,
                                       startAngle: CGFloat(-0.5 * .pi),
@@ -217,15 +223,13 @@ class MainTableViewCell: UITableViewCell{
         }
     }
     
-    var scoreInt : Int?{
-        didSet{
-            setScoreRound()
-        }
-    }
     var place : Place?{
         didSet{
 //          self.scoreInt = place.score
-            setScoreRound()
+            print("place var 실행")
+            if cellImageView != nil{
+                setScoreRound()
+            }
             scoreLabel.text = String(place?.score ?? 0) + "%"
             cellDescription.text = place?.description
             titleEngLabel.text = place?.title_eng

@@ -16,6 +16,7 @@ class PlaceMainTableViewCell: UITableViewCell {
         // Initialization code
         self.cellDescription.lineBreakMode = .byWordWrapping
         self.cellDescription.textColor = .white
+        print("awakeFromNib 실행")
         setImageView()
         adjustLabelToImage()
         if let _ = self.scoreInt{
@@ -25,6 +26,8 @@ class PlaceMainTableViewCell: UITableViewCell {
     }
     var place : Place? {
         didSet{
+            print("place didSet 실행")
+
 //            self.scoreInt = place.score
             print("Place가 시작되었나")
             self.scoreLabel.text = String(place?.score ?? 0) + "%"
