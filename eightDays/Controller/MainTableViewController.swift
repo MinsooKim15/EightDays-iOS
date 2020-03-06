@@ -184,6 +184,8 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
                 }
                 print(models)
                 self.curations = models
+                self.curations = self.getRandomCuration(from: self.curations, get: 5)
+
                 // for 문으로 nsarray를 place화
                 for (index,_) in self.curations.enumerated() {
                     self.curations[index].arrayToSmallPlace()
@@ -191,26 +193,20 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
                 print("변환 결과")
                 print(self.curations[0].placeList!)
                 print(self.curations[0].hasConverted)
-                
-                //                for i in self.curations[0].placeList{
-                //                    // NSArray를 smallplace로 변경을 어디서 해야하지..
-                //                    print("뭔가를 성공했다?")
-                //
-                ////                    if let newArray = i as? Dictionary<String,AnyObject>{
-                ////                        if let newArrayToString = newArray as? [String:Any]{
-                ////                            print(newArrayToString)
-                ////                            print("일단 형태를 대충 바꿨으니, 이제 place로 바꿀 수 있나")
-                ////                            let smallPlace = SmallPlace(dictionary: newArrayToString)
-                ////                            print("이것도 해내었나?")
-                ////                            print(smallPlace)
-                ////                        }
-                ////                    }
-                //                    print("으으음??")
-                //                }
+
             }
         }
     }
-    
+    func getRandomCuration(from curations:[Curation], get limits:Int) -> [Curation]{
+        print("Random Number")
+        let sequence = 0 ..< self.curations.count
+        let shuffledSequence = sequence.shuffled()
+        var result: [Curation] = []
+        for i in shuffledSequence[0...(limits - 1)]{
+            result.append(curations[i])
+        }
+        return result
+    }
     
     
     
