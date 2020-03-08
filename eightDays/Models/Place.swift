@@ -58,7 +58,7 @@ extension Place {
         // 개별 Model은 있으면 그만 없어도 그만 임.
         // TODO: 근데 아예 해당 값이 없으면 바로 에러 테트림.. 이거 고쳐야 함.
         let description = dictionary["desctiption"] as? String
-        let imgUrl =  dictionary["img_url"] as? String
+        let imgUrl =  dictionary["imgUrl"] as? String
         var weather : Weather?
         var cellCount : Int = 0
         var listOfUsefulData : [Any] = []
@@ -102,8 +102,6 @@ extension Place {
                 listOfUsefulData.append(exchange)
             }
         }
-        
-
 //            self.title_kor = title_kor
 //            self.title_eng = title_eng
 //            self.subtitle = subtitle

@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 import MBCircularProgressBar
+import Firebase
 
 protocol MyCustomCellDelegator {
     func callSegueFromCell(myData dataobject: Any?)
@@ -26,7 +27,6 @@ class MainTableViewCell: UITableViewCell{
         print("awakeFromNib 실행")
         // setGradientBackground()
         // 줄 바꿈은 단어 단위로..?( 더 해보고 변경 필요하면 바꾸자)
-        self.cellDescription.lineBreakMode = .byWordWrapping
         setImageView()
         // let colorTop =  UIColor.brightCyan
         // let colorBottom = UIColor.darkSkyBlue
@@ -216,13 +216,13 @@ class MainTableViewCell: UITableViewCell{
     
 
     
-    @IBOutlet weak var cellDescription: UILabel!
     @IBOutlet weak var cellImageView: UIImageView!{
         didSet{
             print("실행")
         }
     }
     
+    @IBOutlet weak var cellTitle: UILabel!
     var place : Place?{
         didSet{
 //          self.scoreInt = place.score
@@ -231,20 +231,22 @@ class MainTableViewCell: UITableViewCell{
                 setScoreRound()
             }
             scoreLabel.text = String(place?.score ?? 0) + "%"
-            cellDescription.text = place?.description
+//            cellDescription.text = place?.description
             titleEngLabel.text = place?.title_eng
+            cellTitle.text = "베스트\n여행 점수"
             let placeholderImage = UIImage(named: "boracay")!
-            if let imageUrl  = place?.img_url as? String {
-                let image_ = URL(string: imageUrl)
-                print(image_)
-                print("이미지 불러오기 시작")
-                cellImageView.af_setImage(withURL: image_!, placeholderImage : placeholderImage)
-                }else{
-                cellImageView = UIImageView(image:placeholderImage)
-            }
-                //        self.layoutSubviews()
-                //        cellImageView.downloaded(from: place.img_url)
-
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let islandRef = storageRef.child(place?.img_url ?? "a.jpg")
+            islandRef.getData(maxSize: 2 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print(error)
+                            // Uh-oh, an error occurred!
+                } else {
+                            // Data for "images/island.jpg" is returned
+                    self.cellImageView.image = UIImage(data: data!)
+                    }
+                }
         }
         
     }

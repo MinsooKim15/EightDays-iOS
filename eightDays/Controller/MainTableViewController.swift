@@ -38,9 +38,8 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         getMainPlace()
         setNavigationBar()
         getCuration()
-        
-        //여기까지
-        //        addDocument()
+        self.tableView?.separatorStyle = UITableViewCell.SeparatorStyle.none
+
     }
     
     //Navigation Bar 기본 설정을 위한 메소드
@@ -267,7 +266,8 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return CGFloat(461.3)
+            return CGFloat(400)
+//            return CGFloat(461.3)
         }else{
             return CGFloat(349.7)
         }
