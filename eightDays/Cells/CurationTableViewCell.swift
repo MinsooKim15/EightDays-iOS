@@ -109,7 +109,7 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let placeList_  = self.placeList{
+        if let placeList_  = self.curation?.placeList!{
             print(self.delegate)
             self.delegate?.callSegueFromCell(myData: placeList_[indexPath.row])
         }

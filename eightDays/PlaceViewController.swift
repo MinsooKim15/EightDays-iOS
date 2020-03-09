@@ -51,9 +51,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         self.contentTableView.register(PlaceFlightTableViewCell.self, forCellReuseIdentifier: "placeFlightTableViewCell")
         self.contentTableView.register(PlaceHotelTableViewCell.self, forCellReuseIdentifier: "placeHotelTableViewCell")
         //MARK: Firestore 관련 코드 in viewDidLoad()
-        let settings = FirestoreSettings()
-        Firestore.firestore().settings = settings
-        db = Firestore.firestore()
+        
         contentTableView.dataSource = self
         contentTableView.delegate = self
         self.view.addSubview(closeButton)
@@ -83,40 +81,65 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         didSet{
             //Place가 넘어오면, 그대로 셀을 채웁니다.
             print("Place가 잘 넘어왔습니다.")
+            self.contentTableView.reloadData()
         }
     }
     var smallPlace : SmallPlace?{
         didSet{
             //smallPlace가 넘어오면 Referenece로 firestore를 찌릅니다.
             print("smallPlace가 잘 넘어왔습니다.")
+            if let smallPlace_ = smallPlace{
+                print(smallPlace_.place_id)
+                self.getPlace(byId: smallPlace_.place_id)
+            }
         }
     }
-    
-    func getMainPlace(byId title : String){
-        //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
-        print("getDocument")
-        let placeRef = db.collection("place")
-        //            placeRef.order(by: "score", descending: true).limit(to: 1)
-        placeRef.whereField("title_eng", isEqualTo: title)
-        placeRef.getDocuments(){(querySnapshot, err) in
-            
+    func getPlace(byId placeId : String){
+        print(placeId)
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
+        let placeRef = db.collection("place").document(placeId)
+        placeRef.getDocument(){(document, err) in
             if let err = err{
-                print("Error getting documents: \(err)")
+                print(err)
             }else{
-                let models = querySnapshot!.documents.map{
-                    (document) -> Place in if let model = Place(dictionary: document.data()){
+                let model = document!.data().map{
+                    (document) -> Place in if let model = Place(dictionary: document){
                         return model
-                    } else {
+                    }else{
                         fatalError("Unable to initialize type \(Place.self) with dictionary")
                     }
                 }
-                print(models)
-                self.places = models
+                self.place = model
+                print(self.place)
             }
-            print("done")
-            //                self.tableView.reloadData()
         }
     }
+    
+//    func getMainPlace(byId title : String){
+//        //MARK : place 콜렉션에서 가장 score 높은 것 하나만 뽑는다.
+//        print("getDocument")
+////        let placeRef = db.collection("place").doc(id)
+////                placeRef.order(by: "score", descending: true).limit(to: 1)
+//        placeRef.getDocuments(){(querySnapshot, err) in
+//            if let err = err{
+//                print("Error getting documents: \(err)")
+//            }else{
+//                let models = querySnapshot!.documents.map{
+//                    (document) -> Place in if let model = Place(dictionary: document.data()){
+//                        return model
+//                    } else {
+//                        fatalError("Unable to initialize type \(Place.self) with dictionary")
+//                    }
+//                }
+//                print(models)
+//                self.place = models[0]
+//            }
+//            print("done")
+//            //                self.tableView.reloadData()
+//        }
+//    }
     func getMainPlace(byTitle: String){
         //        print("")
     }
