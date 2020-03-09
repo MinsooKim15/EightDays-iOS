@@ -98,7 +98,8 @@ class CurationTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollecti
         // Collection별로 Radius를 주자
         
         //Collection에 붙는
-        cell.curationPlaceSubTitle.textColor = UIColor.steel
+        //TODO : subtitle 개발 완료시 해제
+//        cell.curationPlaceSubTitle.textColor = UIColor.steel
         cell.score.textColor = UIColor.darkSkyBlueTwo
         
         

@@ -18,7 +18,8 @@ class CurationCollectionViewCell: UICollectionViewCell {
     var smallPlace : SmallPlace?{
         didSet{
             self.curationPlaceTitle.text = smallPlace?.title_kor
-            self.curationPlaceSubTitle.text = smallPlace?.subtitle
+            //TODO : Subtitle 개발 완료시 주석해제
+//            self.curationPlaceSubTitle.text = smallPlace?.subtitle
             if let scoreInt = smallPlace?.score{
                self.score.text = String(scoreInt) + "%"
             }else{
@@ -53,7 +54,8 @@ class CurationCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var curationImageView: UIImageView!
     @IBOutlet weak var curationPlaceTitle: UILabel!
-    @IBOutlet weak var curationPlaceSubTitle: UILabel!
+    //TODO : Subtitle 개발 완료시 주석 해제하고 Storyboard 연결
+//    @IBOutlet weak var curationPlaceSubTitle: UILabel!
     @IBOutlet weak var score: UILabel!
 }
 

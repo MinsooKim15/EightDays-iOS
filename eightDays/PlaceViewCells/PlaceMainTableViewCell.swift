@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PlaceMainTableViewCell: UITableViewCell {
     //TODO: 얘도 다 코드로 바꾸자(Storyboard 남기지 말기)
@@ -14,8 +15,9 @@ class PlaceMainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.cellDescription.lineBreakMode = .byWordWrapping
-        self.cellDescription.textColor = .white
+        //TODO : cellDescription 추가시 주석 해제
+//        self.cellDescription.lineBreakMode = .byWordWrapping
+//        self.cellDescription.textColor = .white
         print("awakeFromNib 실행")
         setImageView()
         adjustLabelToImage()
@@ -34,19 +36,32 @@ class PlaceMainTableViewCell: UITableViewCell {
             setScoreRound()
             // MainTableView에서는 Place를 잘 들고 있는게 중요했지만, 얘는 아닙니다.
                     //            self.place = place
-            cellDescription.text = place?.description
+            //TODO : cellDescription 추가시 주석 해제
+//            cellDescription.text = place?.description
             titleEngLabel.text = place?.title_eng
             let placeholderImage = UIImage(named: "boracay")!
             // 아래는 만약 URL이 비어있을 때 특정 PlaceHolder를 채우기 위한 코드입니다.
-            if let imageUrl  = place?.img_url as? String {
-                let image_ = URL(string: imageUrl)
-                print(image_)
-                print("이미지 불러오기 시작")
-                            
-                cellImageView.af_setImage(withURL: image_!, placeholderImage : placeholderImage)
-            }else{
-                cellImageView = UIImageView(image:placeholderImage)
-            }
+//            if let imageUrl  = place?.img_url as? String {
+//                let image_ = URL(string: imageUrl)
+//                print(image_)
+//                print("이미지 불러오기 시작")
+//
+//                cellImageView.af_setImage(withURL: image_!, placeholderImage : placeholderImage)
+//            }else{
+//                cellImageView = UIImageView(image:placeholderImage)
+//            }
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let islandRef = storageRef.child(place?.img_url ?? "a.jpg")
+            islandRef.getData(maxSize: 2 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print(error)
+                            // Uh-oh, an error occurred!
+                } else {
+                            // Data for "images/island.jpg" is returned
+                    self.cellImageView.image = UIImage(data: data!)
+                    }
+                }
 //            setScoreRound()
         }
     }
@@ -215,7 +230,8 @@ class PlaceMainTableViewCell: UITableViewCell {
     
     //TODO : Weak를 삭제했음 자동 dealloc을 해결하려고 - 문제 있을지 보자
     @IBOutlet var cellImageView: UIImageView!
-    @IBOutlet weak var cellDescription: UILabel!
+//TODO : cellDescription 추가시 주석 해제 + 연결
+//    @IBOutlet weak var cellDescription: UILabel!
     
     
     

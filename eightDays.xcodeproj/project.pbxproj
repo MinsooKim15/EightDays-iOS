@@ -33,6 +33,7 @@
 		028420BF237D97590079D36C /* PlaceWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028420BE237D97590079D36C /* PlaceWeatherTableViewCell.swift */; };
 		028420C1237FE4AF0079D36C /* PlaceExchangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028420C0237FE4AF0079D36C /* PlaceExchangeTableViewCell.swift */; };
 		028420C3237FE88B0079D36C /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028420C2237FE88B0079D36C /* Exchange.swift */; };
+		02B0B30B2415E52C00D0E45F /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0B30A2415E52C00D0E45F /* NavButton.swift */; };
 		02BCC171240FC43000FA0BBF /* Curation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BCC170240FC43000FA0BBF /* Curation.swift */; };
 		02F1D95A2365E340003449BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F1D9592365E340003449BE /* GoogleService-Info.plist */; };
 		02F2EE27236EE0B700195B95 /* CurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2EE26236EE0B700195B95 /* CurationTableViewCell.swift */; };
@@ -69,6 +70,7 @@
 		028420BE237D97590079D36C /* PlaceWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		028420C0237FE4AF0079D36C /* PlaceExchangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceExchangeTableViewCell.swift; sourceTree = "<group>"; };
 		028420C2237FE88B0079D36C /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
+		02B0B30A2415E52C00D0E45F /* NavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
 		02BCC170240FC43000FA0BBF /* Curation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curation.swift; sourceTree = "<group>"; };
 		02F1D9592365E340003449BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../dev/deep learning/Lecture5/Week3/Trigger word detection/raw_data/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02F2EE26236EE0B700195B95 /* CurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationTableViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				0211481D235C37BA003E77F0 /* Info.plist */,
 				02114815235C37B7003E77F0 /* eightDays.xcdatamodeld */,
 				02F1D9592365E340003449BE /* GoogleService-Info.plist */,
+				02B0B30A2415E52C00D0E45F /* NavButton.swift */,
 			);
 			path = eightDays;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				024180E52369D54900185690 /* MainNavigationController.swift in Sources */,
 				0211480D235C37B7003E77F0 /* AppDelegate.swift in Sources */,
 				02F2EE27236EE0B700195B95 /* CurationTableViewCell.swift in Sources */,
+				02B0B30B2415E52C00D0E45F /* NavButton.swift in Sources */,
 				0262245F2365AEC9008DD7E0 /* Place.swift in Sources */,
 				0233ECD2238A88690098607C /* PlaceHotelTableViewCell.swift in Sources */,
 				022788EC23780E9900B88E0D /* SearchViewController.swift in Sources */,

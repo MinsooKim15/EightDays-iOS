@@ -58,23 +58,10 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         contentTableView.delegate = self
         self.view.addSubview(closeButton)
         closeButton.anchor(top: self.view.topAnchor, left: nil, bottom: nil, right: self.view.rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 17, width: 32, height: 32, enableInsets: false)
-        print("Yeah")
         self.view.backgroundColor = .brightCyan
-        print("Place 데이터 확인")
-        print(place?.cellCount)
-        print(place?.listOfUsefulData)
+        self.contentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         // Do any additional setup after loading the view.
     }
-    //
-    //    //MARK : TableView 관련 코드
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //           return 1
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        let cell = self.table
-    //           return cell
-    //    }
     
     var closeButton : CloseButton = {
         var button = CloseButton()
@@ -169,7 +156,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
         //PlaceMainTableViewCell을 만들어 주는 코드입니다.
         let cell = self.contentTableView.dequeueReusableCell(withIdentifier: "placeMainTableViewCell", for: indexPath) as! PlaceMainTableViewCell
         if let place_ = self.place {
-//            cell.populate(place:place_)
+//            cell.popuate(place:place_)
             cell.place = place_
         }
         // 여기까지가 데이터를 입히는 코드
@@ -237,7 +224,7 @@ class PlaceViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.row) == 0{
-            return CGFloat(461.3)
+            return CGFloat(250)
         }else{
             switch (place?.listOfUsefulData?[indexPath.row - 1]){
             case is(Flight):

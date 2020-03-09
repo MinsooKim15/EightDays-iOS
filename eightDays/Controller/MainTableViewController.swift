@@ -12,9 +12,6 @@ import SDWebImage
 
 class MainTableViewController: UITableViewController, MyCustomCellDelegator {
     
-    
-    
-    
     //TODO: 스크롤할때마다 메소드들이 우수수 재실행됨..
     //TODO: 갑자기 getdocument 실행 없이 cell들이 실행되어서, places가 빈값이 되어버림 해결하자
     var db: Firestore!
@@ -45,7 +42,8 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
     //Navigation Bar 기본 설정을 위한 메소드
     func setNavigationBar(){
         //여기부터 밑에는 navigation controller와 관련된 무엇인가를 테스트해보는 곳 입니다.
-        self.navigationItem.title = "이름이다."
+        self.navigationItem.title = "8 Days"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
         
         //네비게이션 바 밑의 선을 없애기 위한 코드
@@ -56,7 +54,11 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(searchTapped))
         // 일단 없앱니다. -> 고도화시 검색 기능 추가하기
         //TODO : Setting Button이 들어와야 할 자리임.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(settingTapped))
+//        self.view.addSubview(backButton)
+//        self.navigationItem.rightBarButtonItem.target
+//        UIBarButtonItem(barButtonSystemItem: NavButton, target: self, action: #selector(settingTapped))
+        //TODO : 개선 시점에 아래 코드 주석 해제
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationController?.navigationBar.barTintColor = .brightCyan
         self.navigationController?.navigationBar.isTranslucent = false
     }
@@ -66,7 +68,13 @@ class MainTableViewController: UITableViewController, MyCustomCellDelegator {
         self.performSegue(withIdentifier: "ContentSegue", sender: dataobject)
     }
     
-    
+    lazy var backButton: NavButton = {
+//        let button = NavButton(frame: CGRect(x: 0, y: self.view.frame.size.height/2, width: self.view.frame.size.width, height: 100))
+        let button = NavButton()
+        button.addTarget(self, action: #selector(settingTapped), for: .touchUpInside)
+        return button
+    }()
+
     //Navigation Bar Button 클릭시 세그웨이
     @objc
     func searchTapped(sender:UIBarButtonItem){

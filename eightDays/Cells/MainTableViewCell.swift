@@ -233,7 +233,9 @@ class MainTableViewCell: UITableViewCell{
             scoreLabel.text = String(place?.score ?? 0) + "%"
 //            cellDescription.text = place?.description
             titleEngLabel.text = place?.title_eng
+            titleEngLabel.adjustsFontSizeToFitWidth = true
             cellTitle.text = "베스트\n여행 점수"
+//            cellTitle.adjustsFontSizeToFitWidth = true
             let placeholderImage = UIImage(named: "boracay")!
             let storage = Storage.storage()
             let storageRef = storage.reference()
